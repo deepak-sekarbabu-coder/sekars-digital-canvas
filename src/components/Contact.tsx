@@ -1,4 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+declare global {
+  interface Window {
+    emailjs: any; // Type for EmailJS
+  }
+}
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,7 +21,42 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isEmailJsReady, setIsEmailJsReady] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Check if EmailJS is already loaded
+    if (window.emailjs) {
+      setIsEmailJsReady(true);
+      return;
+    }
+
+    // Load EmailJS script
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+    script.async = true;
+    script.onload = () => {
+      // Initialize EmailJS with your public key from environment variable
+      window.emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '');
+      setIsEmailJsReady(true);
+    };
+    script.onerror = () => {
+      console.error('Failed to load EmailJS');
+      toast({
+        title: 'Error',
+        description: 'Failed to load email service. Please try again later.',
+        variant: 'destructive',
+      });
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      // Clean up
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, [toast]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,22 +65,78 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isEmailJsReady) {
+      toast({
+        title: 'Error',
+        description: 'Email service is not ready. Please try again in a moment.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    // Basic form validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: 'Error',
+        description: 'Please fill in all required fields',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: 'Error',
+        description: 'Please enter a valid email address',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Get EmailJS configuration from environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        to_name: 'Deepak',
+        subject: formData.subject || 'Message from your Website',
+        message: formData.message,
+      };
+
+      await window.emailjs.send(serviceId, templateId, templateParams);
+
       toast({
         title: 'Message Sent!',
         description: "Thank you for your message. I'll get back to you soon!",
       });
+
+      // Reset form
       setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to send message. Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const downloadResume = () => {
     window.open(
-      '/resume/Deepak Sekarbabu_SolutionArchitect_Java.pdf',
+      import.meta.env.VITE_RESUME_PATH || '/resume/resume.pdf',
       '_blank',
       'noopener,noreferrer'
     );
@@ -49,36 +146,36 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'deepak.sekarbabu@tcs.com',
-      href: 'mailto:deepak.sekarbabu@tcs.com',
+      value: import.meta.env.VITE_CONTACT_EMAIL || '',
+      href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL || ''}`,
       description: 'Send me an email anytime',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+46 767486520',
-      href: 'tel:+46 767486520',
+      value: import.meta.env.VITE_PHONE_NUMBER || '',
+      href: `tel:${import.meta.env.VITE_PHONE_NUMBER || ''}`,
       description: 'Available Mon-Fri, 9AM-6PM CEST',
     },
     {
       icon: Phone,
       label: 'WhatsApp',
-      value: '+91 9789801844',
-      href: 'tel:+91 9789801844',
+      value: import.meta.env.VITE_WHATSAPP_NUMBER || '',
+      href: `tel:${import.meta.env.VITE_WHATSAPP_NUMBER || ''}`,
       description: 'Available Mon-Fri, 9AM-6PM CEST',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Stockholm, Sweden',
+      value: import.meta.env.VITE_LOCATION || 'Your Location',
       href: '#',
       description: 'Open to opportunities in UK',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/deepak-sekarbabu-85b67628',
-      href: 'https://www.linkedin.com/in/deepak-sekarbabu-85b67628/',
+      value: `linkedin.com/in/${import.meta.env.VITE_LINKEDIN_URL || ''}`,
+      href: `https://www.linkedin.com/in/${import.meta.env.VITE_LINKEDIN_URL || ''}/`,
       description: 'Connect with me professionally',
     },
   ];
@@ -260,7 +357,7 @@ const Contact = () => {
             </p>
             <div className="flex items-center justify-center gap-4">
               <a
-                href="https://www.linkedin.com/in/deepak-sekarbabu-85b67628/"
+                href={`https://www.linkedin.com/in/${import.meta.env.VITE_LINKEDIN_URL || ''}/`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
@@ -268,7 +365,7 @@ const Contact = () => {
                 <Linkedin className="h-5 w-5 text-primary" />
               </a>
               <a
-                href="https://github.com/deepak-sekarbabu"
+                href={`https://github.com/${import.meta.env.VITE_GITHUB_URL || ''}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
@@ -276,7 +373,7 @@ const Contact = () => {
                 <Github className="h-5 w-5 text-primary" />
               </a>
               <a
-                href="mailto:deepak.sekarbabu@tcs.com"
+                href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL || ''}`}
                 className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
               >
                 <Mail className="h-5 w-5 text-primary" />
