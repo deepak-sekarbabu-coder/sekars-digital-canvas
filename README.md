@@ -1,73 +1,97 @@
-# Welcome to your Lovable project
+# Deepak Sekar Babu's Digital Canvas
 
-## Project info
+A modern, professional portfolio web application for Deepak Sekarbabu. Showcases skills, experience, projects, education, and contact information with a beautiful, responsive UI.
 
-**URL**: https://lovable.dev/projects/dd20981d-3418-461b-a93d-3352f790e365
+---
 
-## How can I edit this code?
+## Project Overview
 
-There are several ways of editing your application.
+This project is a personal portfolio website built to highlight software development expertise, technical skills, and professional achievements. It features smooth navigation, dark mode, and a clean, accessible design.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/dd20981d-3418-461b-a93d-3352f790e365) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- Responsive, mobile-friendly layout
+- Hero section with profile and social links
+- About, Experience, Skills, Education, and Projects sections
+- Contact form with toast notifications
+- Dark/light mode toggle
+- Modern UI components (shadcn-ui)
+- Built with React, TypeScript, Tailwind CSS, and Vite
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Folder Structure
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```
+src/
+  components/      # UI and section components (Hero, About, Projects, etc.)
+  hooks/           # Custom React hooks
+  pages/           # Page-level components (Index, NotFound)
+  lib/             # Utility functions
+  index.css        # Tailwind and custom styles
+  main.tsx         # App entry point
+```
 
-Follow these steps:
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js & npm (recommended: use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
+cd sekars-digital-canvas
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Visit `http://localhost:5173` (or the port shown in your terminal) to view the app.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Editing the Code
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+You can edit this project in several ways:
 
-## What technologies are used for this project?
+- **Use Lovable:** [Open in Lovable](https://lovable.dev/projects/dd20981d-3418-461b-a93d-3352f790e365) and prompt changes directly.
+- **Use your IDE:** Clone, edit, and push changes locally. All changes sync with Lovable.
+- **GitHub:** Edit files directly in GitHub or use Codespaces for a cloud IDE.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Technologies Used
 
-## How can I deploy this project?
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [shadcn-ui](https://ui.shadcn.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-Simply open [Lovable](https://lovable.dev/projects/dd20981d-3418-461b-a93d-3352f790e365) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## Deployment
 
-Yes, you can!
+To deploy, open [Lovable](https://lovable.dev/projects/dd20981d-3418-461b-a93d-3352f790e365) and click Share → Publish.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Custom Domain
+
+You can connect a custom domain via Project > Settings > Domains in Lovable. [Read more](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide).
+
+---
+
+## License
+
+This project is for personal portfolio use. For other uses, please contact the author.
