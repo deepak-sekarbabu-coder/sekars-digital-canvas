@@ -16,7 +16,7 @@ const Hero = () => {
           {/* Profile Image */}
           <div className="mb-8">
             <img
-              src="/lovable-uploads/Deepak1.png"
+              src="/pics/Deepak1.png"
               alt="Deepak Sekarbabu"
               className="mx-auto h-32 w-32 rounded-full border-4 border-white object-cover shadow-section sm:h-40 sm:w-40 lg:h-48 lg:w-48"
             />
