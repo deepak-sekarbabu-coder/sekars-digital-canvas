@@ -1,105 +1,103 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Calendar, MapPin, Award, BookOpen } from "lucide-react";
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { GraduationCap, Calendar, MapPin, Award, BookOpen } from 'lucide-react';
 
 const Education = () => {
   const education = [
     {
-      degree: "Master of Science in Computer Science",
-      institution: "Stanford University",
-      location: "Stanford, CA",
-      period: "2016 - 2018",
-      gpa: "3.8/4.0",
+      degree: 'Bachelor of Computer Science & Engineering',
+      institution: 'Anna University',
+      location: 'Chennai, India',
+      period: '2008 - 2012',
+      gpa: '7.84/10.0',
       highlights: [
-        "Specialized in Software Engineering and Distributed Systems",
-        "Teaching Assistant for Advanced Algorithms course",
-        "Led a team project on Machine Learning applications in web development",
-        "Published research paper on 'Optimizing Database Performance in Cloud Environments'"
+        'Graduated with First Class Honours',
+        'Winner of Inter-College Programming Competition (2009)',
+        'Did my final year project on Geo Location alerts using Java',
       ],
-      coursework: ["Advanced Algorithms", "Distributed Systems", "Machine Learning", "Software Architecture", "Database Systems"]
+      coursework: [
+        'Java',
+        'Object-Oriented Programming',
+        'Data Structures',
+        'Database Systems',
+        'Advanced Algorithms',
+        'Software Architecture',
+        'Distributed Systems',
+      ],
     },
     {
-      degree: "Bachelor of Technology in Information Technology",
-      institution: "Indian Institute of Technology",
-      location: "Chennai, India",
-      period: "2012 - 2016",
-      gpa: "8.5/10.0",
-      highlights: [
-        "Graduated with First Class Honors",
-        "Vice President of the Computer Science Society",
-        "Winner of Inter-College Programming Competition (2015)",
-        "Completed internship at Google India (Summer 2015)"
-      ],
-      coursework: ["Data Structures", "Computer Networks", "Web Technologies", "Software Engineering", "Object-Oriented Programming"]
-    }
+      degree: 'High School',
+      institution: 'G.R.T.M. Vivekanda Vidyalaya',
+      location: 'Chennai, India',
+      period: '2006 - 2008',
+      percentage: '86%',
+      highlights: ['Graduated with First Class Honors', 'Sports Chairman of the school'],
+      coursework: ['Physics', 'Chemistry', 'Mathematics', 'English', 'Computer Science'],
+    },
   ];
 
   const certifications = [
     {
-      name: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      date: "2023",
-      credentialId: "AWS-SAA-123456"
+      name: 'AWS Certified Cloud Practitioner',
+      issuer: 'Amazon Web Services',
+      date: '2024',
+      credentialId:
+        'https://www.credly.com/badges/3c28f77d-0485-4593-a173-307cca4cd247/linked_in_profile',
     },
     {
-      name: "Certified Kubernetes Administrator",
-      issuer: "Cloud Native Computing Foundation",
-      date: "2022",
-      credentialId: "CKA-789012"
+      name: 'Certified Safe Practitioner',
+      issuer: 'SAFe',
+      date: '2024',
+      credentialId: 'https://www.credly.com/badges/46acd682-321f-45ea-9fa0-55d794a62138',
     },
     {
-      name: "Google Cloud Professional Developer",
-      issuer: "Google Cloud",
-      date: "2022",
-      credentialId: "GCP-PD-345678"
+      name: 'Oracle Certified Professional, Java SE 6 Programmer',
+      issuer: 'Oracle',
+      date: '2012',
+      credentialId: 'https://www.credly.com/badges/dad27036-9cc4-4be8-90d1-fce1d0064478/public_url',
     },
-    {
-      name: "Scrum Master Certified",
-      issuer: "Scrum Alliance",
-      date: "2021",
-      credentialId: "CSM-901234"
-    }
   ];
 
   const achievements = [
-    "Dean's List - 4 consecutive semesters",
-    "Outstanding Student Award in Computer Science",
-    "Best Final Year Project - 'Real-time Collaborative Code Editor'",
-    "Google Summer of Code Participant (2015)",
-    "ACM ICPC Regional Finalist (2014, 2015)"
+    'Achieved 80.4% in S.S.L.C (CBSE).',
+    'Achieved 85.9% in H.S.C (State Board).',
+    'Maintaining a CGPA of 7.9  in B.E. at Prathyusha Institute of Technology & Management',
+    'Outstanding Student Award in Computer Science',
+    'Runner-up in Kho-Kho at a State Level tournament organized by Anna Sports Fest 2011.',
+    'He has won many prizes in All India Karate (Martial Arts) Tournaments.',
   ];
 
   return (
-    <section id="education" className="py-20 bg-background">
+    <section id="education" className="bg-background py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="mx-auto max-w-6xl">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-heading font-bold mb-6">
+          <div className="mb-16 text-center">
+            <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
               Education & <span className="text-gradient">Qualifications</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              My academic journey and professional certifications that have shaped my expertise 
-              in software development and technology.
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
+              My academic journey and professional certifications that have shaped my expertise in
+              software development and technology.
             </p>
           </div>
 
           {/* Education Timeline */}
-          <div className="space-y-8 mb-16">
+          <div className="mb-16 space-y-8">
             {education.map((edu, index) => (
               <Card key={index} className="card-hover">
                 <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row gap-6">
+                  <div className="flex flex-col gap-6 lg:flex-row">
                     {/* Left Column - Main Info */}
                     <div className="flex-1">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="p-3 bg-primary/10 rounded-full">
+                      <div className="mb-4 flex items-start gap-4">
+                        <div className="rounded-full bg-primary/10 p-3">
                           <GraduationCap className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-foreground mb-2">{edu.degree}</h3>
-                          <p className="text-primary font-semibold mb-2">{edu.institution}</p>
-                          <div className="flex flex-col sm:flex-row gap-4 text-sm text-muted-foreground mb-2">
+                          <h3 className="mb-2 text-xl font-bold text-foreground">{edu.degree}</h3>
+                          <p className="mb-2 font-semibold text-primary">{edu.institution}</p>
+                          <div className="mb-2 flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row">
                             <div className="flex items-center gap-2">
                               <Calendar className="h-4 w-4" />
                               <span>{edu.period}</span>
@@ -109,19 +107,25 @@ const Education = () => {
                               <span>{edu.location}</span>
                             </div>
                           </div>
-                          <Badge variant="secondary" className="w-fit">
-                            GPA: {edu.gpa}
-                          </Badge>
+                          {edu.gpa ? (
+                            <Badge variant="secondary" className="w-fit">
+                              GPA: {edu.gpa}
+                            </Badge>
+                          ) : edu.percentage ? (
+                            <Badge variant="secondary" className="w-fit">
+                              Score: {edu.percentage}
+                            </Badge>
+                          ) : null}
                         </div>
                       </div>
 
                       {/* Highlights */}
                       <div className="mb-6">
-                        <h4 className="font-semibold mb-3">Key Highlights:</h4>
+                        <h4 className="mb-3 font-semibold">Key Highlights:</h4>
                         <ul className="space-y-2">
                           {edu.highlights.map((highlight, idx) => (
                             <li key={idx} className="flex items-start gap-3 text-foreground/80">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                              <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                               <span>{highlight}</span>
                             </li>
                           ))}
@@ -131,7 +135,7 @@ const Education = () => {
 
                     {/* Right Column - Coursework */}
                     <div className="lg:w-64 lg:flex-shrink-0">
-                      <h4 className="font-semibold mb-3">Relevant Coursework:</h4>
+                      <h4 className="mb-3 font-semibold">Relevant Coursework:</h4>
                       <div className="flex flex-wrap gap-2">
                         {edu.coursework.map((course) => (
                           <Badge key={course} variant="outline" className="text-xs">
@@ -147,12 +151,12 @@ const Education = () => {
           </div>
 
           {/* Certifications & Achievements Grid */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid gap-8 lg:grid-cols-2">
             {/* Certifications */}
             <Card className="card-hover">
               <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-primary/10 rounded-full">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="rounded-full bg-primary/10 p-2">
                     <Award className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold">Professional Certifications</h3>
@@ -161,12 +165,17 @@ const Education = () => {
                   {certifications.map((cert, index) => (
                     <div key={index} className="border-l-2 border-primary/20 pl-4">
                       <h4 className="font-semibold text-foreground">{cert.name}</h4>
-                      <p className="text-sm text-primary font-medium">{cert.issuer}</p>
-                      <div className="flex items-center gap-4 mt-1">
+                      <p className="text-sm font-medium text-primary">{cert.issuer}</p>
+                      <div className="mt-1 flex items-center gap-4">
                         <span className="text-xs text-muted-foreground">{cert.date}</span>
-                        <Badge variant="outline" className="text-xs">
-                          ID: {cert.credentialId}
-                        </Badge>
+                        <a
+                          href={cert.credentialId}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-primary hover:underline"
+                        >
+                          View Credential
+                        </a>
                       </div>
                     </div>
                   ))}
@@ -177,16 +186,16 @@ const Education = () => {
             {/* Academic Achievements */}
             <Card className="card-hover">
               <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-primary/10 rounded-full">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="rounded-full bg-primary/10 p-2">
                     <BookOpen className="h-5 w-5 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold">Academic Achievements</h3>
+                  <h3 className="text-xl font-bold">Academic & Sports Achievements</h3>
                 </div>
                 <div className="space-y-3">
                   {achievements.map((achievement, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                       <span className="text-foreground/80">{achievement}</span>
                     </div>
                   ))}

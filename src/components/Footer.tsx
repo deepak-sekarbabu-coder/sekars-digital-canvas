@@ -1,42 +1,27 @@
-import { Heart, Code } from "lucide-react";
+import { Heart, Code } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted/30 border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center gap-2 text-muted-foreground mb-4 md:mb-0">
-            <span>© {currentYear} Deepak Sekarbabu. Made with</span>
-            <Heart className="h-4 w-4 text-red-500 fill-current" />
-            <span>and</span>
-            <Code className="h-4 w-4 text-primary" />
+    <footer className="border-t border-border bg-muted/30">
+      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between md:flex-row">
+          <div className="mb-4 flex items-center gap-2 text-muted-foreground md:mb-0">
+            <span>© {currentYear} Deepak Sekarbabu</span>
           </div>
-          
+
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a 
-              href="#about" 
-              className="hover:text-primary transition-colors"
-            >
+            <a href="#about" className="transition-colors hover:text-primary">
               About
             </a>
-            <a 
-              href="#projects" 
-              className="hover:text-primary transition-colors"
-            >
+            <a href="#projects" className="transition-colors hover:text-primary">
               Projects
             </a>
-            <a 
-              href="#contact" 
-              className="hover:text-primary transition-colors"
-            >
+            <a href="#contact" className="transition-colors hover:text-primary">
               Contact
             </a>
-            <a 
-              href="#" 
-              className="hover:text-primary transition-colors"
-            >
+            <a href="#" className="transition-colors hover:text-primary">
               Privacy
             </a>
           </div>
