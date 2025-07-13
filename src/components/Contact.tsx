@@ -61,6 +61,13 @@ const Contact = () => {
       description: 'Available Mon-Fri, 9AM-6PM CEST',
     },
     {
+      icon: Phone,
+      label: 'WhatsApp',
+      value: '+91 9789801844',
+      href: 'tel:+91 9789801844',
+      description: 'Available Mon-Fri, 9AM-6PM CEST',
+    },
+    {
       icon: MapPin,
       label: 'Location',
       value: 'Stockholm, Sweden',
@@ -78,7 +85,6 @@ const Contact = () => {
 
   const quickLinks = [
     { label: 'Schedule a Call', icon: Clock, href: '#' },
-    { label: 'View Portfolio', icon: Globe, href: '#projects' },
     { label: 'Download Resume', icon: Send, href: '#' },
   ];
 
