@@ -72,7 +72,7 @@ const Contact = () => {
       label: 'Location',
       value: 'Stockholm, Sweden',
       href: '#',
-      description: 'Open to remote opportunities',
+      description: 'Open to opportunities in UK',
     },
     {
       icon: Linkedin,
@@ -241,10 +241,12 @@ const Contact = () => {
                 <CardContent className="p-6 text-center">
                   <div className="mb-2 inline-flex items-center gap-2 text-green-600 dark:text-green-400">
                     <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-                    <span className="text-sm font-medium">Available for new projects</span>
+                    <span className="text-sm font-medium">
+                      Available for new projects from Dec 2025
+                    </span>
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    Currently accepting freelance and full-time opportunities
+                    Currently looking for opportunities in UK
                   </p>
                 </CardContent>
               </Card>
