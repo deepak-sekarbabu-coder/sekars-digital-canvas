@@ -68,6 +68,16 @@ const Education = () => {
     'He has won many prizes in All India Karate (Martial Arts) Tournaments.',
   ];
 
+  const listVariants = {
+    visible: { transition: { staggerChildren: 0.07 } },
+    hidden: {},
+  };
+
+  const listItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <section id="education" className="bg-background py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +86,7 @@ const Education = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className="mb-16 text-center"
           >
@@ -96,10 +106,11 @@ const Education = () => {
                 key={index}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}
               >
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardContent className="p-8">
                     <div className="flex flex-col gap-6 lg:flex-row">
                       {/* Left Column - Main Info */}
@@ -136,14 +147,24 @@ const Education = () => {
                         {/* Highlights */}
                         <div className="mb-6">
                           <h4 className="mb-3 font-semibold">Key Highlights:</h4>
-                          <ul className="space-y-2">
+                          <motion.ul
+                            className="space-y-2"
+                            variants={listVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.3 }}
+                          >
                             {edu.highlights.map((highlight, idx) => (
-                              <li key={idx} className="flex items-start gap-3 text-foreground/80">
+                              <motion.li
+                                key={idx}
+                                className="flex items-start gap-3 text-foreground/80"
+                                variants={listItemVariants}
+                              >
                                 <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                                 <span>{highlight}</span>
-                              </li>
+                              </motion.li>
                             ))}
-                          </ul>
+                          </motion.ul>
                         </div>
                       </div>
 
@@ -169,60 +190,74 @@ const Education = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6 }}
             className="grid gap-8 lg:grid-cols-2"
           >
             {/* Certifications */}
-            <Card className="card-hover">
-              <CardContent className="p-6">
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="rounded-full bg-primary/10 p-2">
-                    <Award className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Professional Certifications</h3>
-                </div>
-                <div className="space-y-4">
-                  {certifications.map((cert, index) => (
-                    <div key={index} className="border-l-2 border-primary/20 pl-4">
-                      <h4 className="font-semibold text-foreground">{cert.name}</h4>
-                      <p className="text-sm font-medium text-primary">{cert.issuer}</p>
-                      <div className="mt-1 flex items-center gap-4">
-                        <span className="text-xs text-muted-foreground">{cert.date}</span>
-                        <a
-                          href={cert.credentialId}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-primary hover:underline"
-                        >
-                          View Credential
-                        </a>
-                      </div>
+            <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+              <Card>
+                <CardContent className="p-6">
+                  <div className="mb-6 flex items-center gap-3">
+                    <div className="rounded-full bg-primary/10 p-2">
+                      <Award className="h-5 w-5 text-primary" />
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <h3 className="text-xl font-bold">Professional Certifications</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {certifications.map((cert, index) => (
+                      <div key={index} className="border-l-2 border-primary/20 pl-4">
+                        <h4 className="font-semibold text-foreground">{cert.name}</h4>
+                        <p className="text-sm font-medium text-primary">{cert.issuer}</p>
+                        <div className="mt-1 flex items-center gap-4">
+                          <span className="text-xs text-muted-foreground">{cert.date}</span>
+                          <a
+                            href={cert.credentialId}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-primary hover:underline"
+                          >
+                            View Credential
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             {/* Academic Achievements */}
-            <Card className="card-hover">
-              <CardContent className="p-6">
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="rounded-full bg-primary/10 p-2">
-                    <BookOpen className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Academic & Sports Achievements</h3>
-                </div>
-                <div className="space-y-3">
-                  {achievements.map((achievement, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                      <span className="text-foreground/80">{achievement}</span>
+            <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+              <Card>
+                <CardContent className="p-6">
+                  <div className="mb-6 flex items-center gap-3">
+                    <div className="rounded-full bg-primary/10 p-2">
+                      <BookOpen className="h-5 w-5 text-primary" />
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <h3 className="text-xl font-bold">Academic & Sports Achievements</h3>
+                  </div>
+                  <motion.div
+                    className="space-y-3"
+                    variants={listVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.2 }}
+                  >
+                    {achievements.map((achievement, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-start gap-3"
+                        variants={listItemVariants}
+                      >
+                        <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                        <span className="text-foreground/80">{achievement}</span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.div>
         </div>
       </div>

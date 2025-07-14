@@ -153,17 +153,6 @@
     background-clip: text;
   }
 
-  /* Card hover effects */
-  .card-hover {
-    transition: var(--transition-smooth);
-    box-shadow: var(--shadow-card);
-  }
-
-  .card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-  }
-
   /* Section backgrounds */
   .section-gradient {
     background: var(--gradient-section);

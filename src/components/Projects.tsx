@@ -98,7 +98,7 @@ const Projects = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className="mb-16 text-center"
           >
@@ -119,11 +119,11 @@ const Projects = () => {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 whileHover={{ scale: 1.03, y: -5 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <Card
-                  className={`card-hover h-full overflow-hidden ${project.highlight ? 'ring-2 ring-primary/20' : ''}`}
+                  className={`group h-full overflow-hidden ${project.highlight ? 'ring-2 ring-primary/20' : ''}`}
                 >
                   {/* Project Image */}
                   <div className="relative h-48 overflow-hidden">
@@ -205,7 +205,7 @@ const Projects = () => {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-12 text-center"
           >
@@ -213,15 +213,18 @@ const Projects = () => {
               Want to see more of my work? Check out my GitHub profile for additional projects and
               contributions.
             </p>
-            <a
+            <motion.a
               href="https://github.com/deepak-sekarbabu"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
               <Github className="mr-2 h-5 w-5" />
               View All Projects on GitHub
-            </a>
+            </motion.a>
           </motion.div>
         </div>
       </div>

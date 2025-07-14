@@ -109,28 +109,37 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-12 flex items-center justify-center gap-6"
           >
-            <a
+            <motion.a
               href="https://www.linkedin.com/in/deepak-sekarbabu-85b67628/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+              className="rounded-full bg-card p-3 shadow-card"
+              whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <Linkedin className="h-6 w-6 text-primary" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="https://github.com/deepak-sekarbabu"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+              className="rounded-full bg-card p-3 shadow-card"
+              whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <Github className="h-5 w-5 text-primary" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="mailto:deepak.sekarbabu@tcs.com"
-              className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+              className="rounded-full bg-card p-3 shadow-card"
+              whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <Mail className="h-6 w-6 text-primary" />
-            </a>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

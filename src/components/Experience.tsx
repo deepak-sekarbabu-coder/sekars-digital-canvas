@@ -149,6 +149,16 @@ const Experience = () => {
     },
   ];
 
+  const listVariants = {
+    visible: { transition: { staggerChildren: 0.07 } },
+    hidden: {},
+  };
+
+  const listItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <section id="experience" className="bg-background py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,7 +167,7 @@ const Experience = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className="mb-16 text-center"
           >
@@ -177,10 +187,11 @@ const Experience = () => {
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
+                viewport={{ once: false, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}
               >
-                <Card className="card-hover h-full">
+                <Card className="h-full">
                   <CardContent className="p-8">
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                       {/* Left Column - Main Info */}
@@ -218,14 +229,24 @@ const Experience = () => {
                         {/* Responsibilities */}
                         <div className="mb-6">
                           <h4 className="mb-3 font-semibold">Key Responsibilities:</h4>
-                          <ul className="space-y-2">
+                          <motion.ul
+                            className="space-y-2"
+                            variants={listVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.2 }}
+                          >
                             {exp.responsibilities.map((responsibility, idx) => (
-                              <li key={idx} className="flex items-start gap-3 text-foreground/80">
+                              <motion.li
+                                key={idx}
+                                className="flex items-start gap-3 text-foreground/80"
+                                variants={listItemVariants}
+                              >
                                 <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                                 <span>{responsibility}</span>
-                              </li>
+                              </motion.li>
                             ))}
-                          </ul>
+                          </motion.ul>
                         </div>
                       </div>
 

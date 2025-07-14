@@ -156,7 +156,7 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className="mb-16 text-center"
           >
@@ -174,11 +174,12 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
+              whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}
               className="lg:col-span-2"
             >
-              <Card className="card-hover h-full">
+              <Card className="h-full">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <div className="rounded-full bg-primary/10 p-2">
@@ -258,76 +259,89 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-6"
             >
               {/* Resume Download */}
-              <Card className="card-hover">
-                <Button variant="outline" onClick={downloadResume} className="w-full">
-                  <Send className="mr-2 h-4 w-4" />
-                  Download Resume
-                </Button>
-              </Card>
+              <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+                <Card>
+                  <Button variant="outline" onClick={downloadResume} className="w-full">
+                    <Send className="mr-2 h-4 w-4" />
+                    Download Resume
+                  </Button>
+                </Card>
+              </motion.div>
 
               {/* Contact Details */}
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle>Get in Touch</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {contactInfo.map((item, index) => (
-                    <a
-                      key={index}
-                      href={item.href}
-                      className="group flex items-start gap-4 rounded-lg p-3 transition-colors hover:bg-muted/50"
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      <div className="rounded-full bg-primary/10 p-2 transition-colors group-hover:bg-primary/20">
-                        <item.icon className="h-4 w-4 text-primary" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h4 className="text-sm font-semibold">{item.label}</h4>
-                        <p className="break-all text-sm text-foreground/80">{item.value}</p>
-                        <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
-                      </div>
-                    </a>
-                  ))}
-                </CardContent>
-              </Card>
+              <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Get in Touch</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {contactInfo.map((item, index) => (
+                      <a
+                        key={index}
+                        href={item.href}
+                        className="group flex items-start gap-4 rounded-lg p-3 transition-colors hover:bg-muted/50"
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      >
+                        <div className="rounded-full bg-primary/10 p-2 transition-colors group-hover:bg-primary/20">
+                          <item.icon className="h-4 w-4 text-primary" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h4 className="text-sm font-semibold">{item.label}</h4>
+                          <p className="break-all text-sm text-foreground/80">{item.value}</p>
+                          <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </CardContent>
+                </Card>
+              </motion.div>
 
               {/* Quick Actions */}
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle>Quick Actions</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {quickLinks.map((link, index) => (
-                    <Button key={index} variant="outline" className="w-full justify-start" asChild>
-                      <a href={link.href}>
-                        <link.icon className="mr-2 h-4 w-4" />
-                        {link.label}
-                      </a>
-                    </Button>
-                  ))}
-                </CardContent>
-              </Card>
+              <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Quick Actions</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    {quickLinks.map((link, index) => (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        className="w-full justify-start"
+                        asChild
+                      >
+                        <a href={link.href}>
+                          <link.icon className="mr-2 h-4 w-4" />
+                          {link.label}
+                        </a>
+                      </Button>
+                    ))}
+                  </CardContent>
+                </Card>
+              </motion.div>
 
               {/* Availability */}
-              <Card className="card-hover">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-2 inline-flex items-center gap-2 text-green-600 dark:text-green-400">
-                    <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-                    <span className="text-sm font-medium">
-                      Available for new projects from Dec 2025
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    Currently looking for opportunities in UK
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-2 inline-flex items-center gap-2 text-green-600 dark:text-green-400">
+                      <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+                      <span className="text-sm font-medium">
+                        Available for new projects from Dec 2025
+                      </span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Currently looking for opportunities in UK
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -335,7 +349,7 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-16 border-t border-border pt-8 text-center"
           >
@@ -343,28 +357,37 @@ const Contact = () => {
               Follow me on social media for updates and tech insights
             </p>
             <div className="flex items-center justify-center gap-4">
-              <a
+              <motion.a
                 href={`https://www.linkedin.com/in/${import.meta.env.VITE_LINKEDIN_URL || ''}/`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+                className="rounded-full bg-card p-3 shadow-card"
+                whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Linkedin className="h-5 w-5 text-primary" />
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href={`https://github.com/${import.meta.env.VITE_GITHUB_URL || ''}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+                className="rounded-full bg-card p-3 shadow-card"
+                whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Github className="h-5 w-5 text-primary" />
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL || ''}`}
-                className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+                className="rounded-full bg-card p-3 shadow-card"
+                whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Mail className="h-5 w-5 text-primary" />
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         </div>

@@ -8,7 +8,7 @@ const Footer = () => {
     <motion.footer
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: false, amount: 0.5 }}
       transition={{ duration: 0.8 }}
       className="border-t border-border bg-muted/30"
     >

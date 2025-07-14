@@ -67,7 +67,7 @@ const About = () => {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: false, amount: 0.1 }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
@@ -112,17 +112,23 @@ const About = () => {
                 <h4 className="mb-4 text-lg font-semibold">Core Values</h4>
                 <div className="flex flex-wrap gap-2">
                   {values.map((value) => (
-                    <Badge key={value} variant="secondary" className="px-3 py-1">
-                      {value}
-                    </Badge>
+                    <motion.div key={value} whileHover={{ scale: 1.1 }}>
+                      <Badge variant="secondary" className="px-3 py-1">
+                        {value}
+                      </Badge>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Professional Image */}
-            <div className="relative">
-              <Card className="card-hover">
+            <motion.div
+              className="relative"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card>
                 <CardContent className="p-0">
                   <img
                     src="/pics/Deepak1.png"
@@ -131,7 +137,7 @@ const About = () => {
                   />
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           </div>
 
           {/* What I Bring */}
@@ -142,11 +148,17 @@ const About = () => {
               variants={cardGridVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
             >
               {highlights.map((item, index) => (
-                <motion.div key={index} variants={cardVariants}>
-                  <Card className="card-hover h-full text-center">
+                <motion.div
+                  key={index}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, scale: 1.03 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Card className="h-full text-center">
+
                     <CardContent className="p-6">
                       <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                         <item.icon className="h-6 w-6 text-primary" />
