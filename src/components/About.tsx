@@ -96,7 +96,7 @@ const About = () => {
               <Card className="card-hover">
                 <CardContent className="p-0">
                   <img
-                    src="/pics/Deepak1.jpg"
+                    src="/pics/Deepak1.png"
                     alt="Deepak Sekarbabu - Professional"
                     className="h-50 w-full rounded-lg object-right-bottom"
                   />
