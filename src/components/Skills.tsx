@@ -1,16 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import {
-  Code,
-  Database,
-  Cloud,
-  Smartphone,
-  GitBranch,
-  Settings,
-  Palette,
-  Brain,
-} from 'lucide-react';
+import { Brain, Code, Cloud, Database, GitBranch, Palette, Settings } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Skills = () => {
   const skillCategories = [
@@ -106,110 +98,173 @@ const Skills = () => {
     'Technical Writing',
   ];
 
+  const gridVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section id="skills" className="bg-gradient-section py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
-          <div className="mb-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 text-center"
+          >
             <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
               <span className="text-gradient">Skills & Expertise</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-              A comprehensive overview of my technical skills, tools and technologies I use to
-              build exceptional software solutions.
+              A comprehensive overview of my technical skills, tools and technologies I use to build
+              exceptional software solutions.
             </p>
-          </div>
+          </motion.div>
 
           {/* Technical Skills Grid */}
-          <div className="mb-12 grid gap-8 lg:grid-cols-2">
+          <motion.div
+            className="mb-12 grid gap-8 lg:grid-cols-2"
+            variants={gridVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+          >
             {skillCategories.map((category, index) => (
-              <Card key={index} className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <div className={`rounded-lg bg-muted p-2 ${category.color}`}>
-                      <category.icon className="h-5 w-5" />
-                    </div>
-                    {category.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">{skill.name}</span>
-                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3">
+                      <div className={`rounded-lg bg-muted p-2 ${category.color}`}>
+                        <category.icon className="h-5 w-5" />
                       </div>
-                      <Progress value={skill.level} className="h-2" />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
+                      {category.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.div
+                        key={skillIndex}
+                        className="space-y-2"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.9 }}
+                        transition={{ duration: 0.4, delay: skillIndex * 0.05 }}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium">{skill.name}</span>
+                          <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                        </div>
+                        <Progress value={skill.level} className="h-2" />
+                      </motion.div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Tools & Technologies */}
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card className="card-hover">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div className="rounded-lg bg-muted p-2 text-cyan-500">
-                    <Settings className="h-5 w-5" />
+          <motion.div
+            className="grid gap-8 md:grid-cols-2"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <div className="rounded-lg bg-muted p-2 text-cyan-500">
+                      <Settings className="h-5 w-5" />
+                    </div>
+                    Tools & Technologies
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {tools.map((tool) => (
+                      <motion.div key={tool} whileHover={{ scale: 1.1 }}>
+                        <Badge variant="secondary" className="text-xs">
+                          {tool}
+                        </Badge>
+                      </motion.div>
+                    ))}
                   </div>
-                  Tools & Technologies
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {tools.map((tool) => (
-                    <Badge key={tool} variant="secondary" className="text-xs">
-                      {tool}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="card-hover">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <div className="rounded-lg bg-muted p-2 text-pink-500">
-                    <Brain className="h-5 w-5" />
+            <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <div className="rounded-lg bg-muted p-2 text-pink-500">
+                      <Brain className="h-5 w-5" />
+                    </div>
+                    Soft Skills
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {softSkills.map((skill) => (
+                      <motion.div key={skill} whileHover={{ scale: 1.1 }}>
+                        <Badge variant="outline" className="text-xs">
+                          {skill}
+                        </Badge>
+                      </motion.div>
+                    ))}
                   </div>
-                  Soft Skills
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {softSkills.map((skill) => (
-                    <Badge key={skill} variant="outline" className="text-xs">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
 
           {/* Certifications & Learning */}
-          <Card className="card-hover mt-8">
-            <CardHeader>
-              <CardTitle className="text-center">Continuous Learning & Growth</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="mb-6 text-muted-foreground">
-                I believe in continuous learning and staying updated with the latest technologies
-                and industry trends. Currently exploring AI/ML integration in web development and
-                advanced cloud architectures.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <Badge variant="secondary">AWS Certified</Badge>
-                <Badge variant="secondary">Agile Practitioner</Badge>
-                <Badge variant="secondary">Open Source Contributor</Badge>
-                <Badge variant="secondary">Tech Community Speaker</Badge>
-              </div>
-            </CardContent>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}
+          >
+            <Card className="mt-8">
+              <CardHeader>
+                <CardTitle className="text-center">
+                  <span className="text-gradient">Continuous Learning & Growth</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="mb-6 text-muted-foreground">
+                  I believe in continuous learning and staying updated with the latest technologies
+                  and industry trends. Currently exploring AI/ML integration in web development and
+                  advanced cloud architectures.
+                </p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Badge variant="secondary">AWS Certified</Badge>
+                  <Badge variant="secondary">Agile Practitioner</Badge>
+                  <Badge variant="secondary">Open Source Contributor</Badge>
+                  <Badge variant="secondary">Tech Community Speaker</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </section>
