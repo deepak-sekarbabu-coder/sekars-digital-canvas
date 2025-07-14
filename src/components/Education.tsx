@@ -65,7 +65,7 @@ const Education = () => {
     'Maintaining a CGPA of 7.9  in B.E. at Prathyusha Institute of Technology & Management',
     'Outstanding Student Award in Computer Science',
     'Runner-up in Kho-Kho at a State Level tournament organized by Anna Sports Fest 2011.',
-    'He has won many prizes in All India Karate (Martial Arts) Tournaments.',
+    'Won many prizes in All India Karate (Martial Arts) Tournaments.',
   ];
 
   const listVariants = {
