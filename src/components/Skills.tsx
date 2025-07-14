@@ -113,10 +113,10 @@ const Skills = () => {
           {/* Section Header */}
           <div className="mb-16 text-center">
             <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
-              Skills & <span className="text-gradient">Expertise</span>
+              <span className="text-gradient">Skills</span> & <span className="text-gradient">Expertise</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-              A comprehensive overview of my technical skills, tools, and technologies I use to
+              A comprehensive overview of my technical skills, tools and technologies I use to
               build exceptional software solutions.
             </p>
           </div>
