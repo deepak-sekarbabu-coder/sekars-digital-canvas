@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, Clock } from 'lucide-react';
+import { Clock, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -287,6 +287,7 @@ const Contact = () => {
                         className="group flex items-start gap-4 rounded-lg p-3 transition-colors hover:bg-muted/50"
                         target={item.href.startsWith('http') ? '_blank' : undefined}
                         rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        aria-label={`Contact via ${item.label}${item.value ? `: ${item.value}` : ''}${item.href.startsWith('http') ? ' (opens in a new tab)' : ''}`}
                       >
                         <div className="rounded-full bg-primary/10 p-2 transition-colors group-hover:bg-primary/20">
                           <item.icon className="h-4 w-4 text-primary" />
@@ -318,7 +319,7 @@ const Contact = () => {
                       >
                         <a
                           href={link.href}
-                          aria-label={`${link.label} (opens in new tab)`}
+                          aria-label={`Quick action: ${link.label} (opens in new tab)`}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -370,6 +371,7 @@ const Contact = () => {
                 whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
+                aria-label="LinkedIn profile (opens in a new tab)"
               >
                 <Linkedin className="h-5 w-5 text-primary" />
               </motion.a>
@@ -381,6 +383,7 @@ const Contact = () => {
                 whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
+                aria-label="GitHub profile (opens in a new tab)"
               >
                 <Github className="h-5 w-5 text-primary" />
               </motion.a>
@@ -390,6 +393,7 @@ const Contact = () => {
                 whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
+                aria-label={`Send email to ${import.meta.env.VITE_CONTACT_EMAIL || ''}`}
               >
                 <Mail className="h-5 w-5 text-primary" />
               </motion.a>

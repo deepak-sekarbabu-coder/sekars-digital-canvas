@@ -1,16 +1,16 @@
-import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { VariantProps, cva } from 'class-variance-authority';
 import { PanelLeft } from 'lucide-react';
+import * as React from 'react';
 
-import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -518,6 +518,7 @@ const SidebarMenuButton = React.forwardRef<
     asChild?: boolean;
     isActive?: boolean;
     tooltip?: string | React.ComponentProps<typeof TooltipContent>;
+    ariaLabel?: string;
   } & VariantProps<typeof sidebarMenuButtonVariants>
 >(
   (
@@ -528,6 +529,8 @@ const SidebarMenuButton = React.forwardRef<
       size = 'default',
       tooltip,
       className,
+      ariaLabel,
+      children,
       ...props
     },
     ref
@@ -542,8 +545,11 @@ const SidebarMenuButton = React.forwardRef<
         data-size={size}
         data-active={isActive}
         className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+        aria-label={ariaLabel}
         {...props}
-      />
+      >
+        {children || (ariaLabel && <span className="sr-only">{ariaLabel}</span>)}
+      </Comp>
     );
 
     if (!tooltip) {
@@ -576,8 +582,9 @@ const SidebarMenuAction = React.forwardRef<
   React.ComponentProps<'button'> & {
     asChild?: boolean;
     showOnHover?: boolean;
+    ariaLabel?: string;
   }
->(({ className, asChild = false, showOnHover = false, ...props }, ref) => {
+>(({ className, asChild = false, showOnHover = false, ariaLabel, children, ...props }, ref) => {
   const Comp = asChild ? Slot : 'button';
 
   return (
@@ -596,8 +603,11 @@ const SidebarMenuAction = React.forwardRef<
           'peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0',
         className
       )}
+      aria-label={ariaLabel}
       {...props}
-    />
+    >
+      {children || (ariaLabel && <span className="sr-only">{ariaLabel}</span>)}
+    </Comp>
   );
 });
 SidebarMenuAction.displayName = 'SidebarMenuAction';

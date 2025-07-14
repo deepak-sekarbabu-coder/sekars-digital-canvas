@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, Play, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import { Github, Play, Star } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -194,7 +194,12 @@ const Projects = () => {
                         className="flex-1"
                         aria-label={`View live demo of ${project.title}`}
                       >
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View live demo of ${project.title} (opens in a new tab)`}
+                        >
                           <Play className="mr-2 h-4 w-4" />
                           Live Demo
                         </a>
@@ -206,7 +211,12 @@ const Projects = () => {
                         className="flex-1"
                         aria-label={`View source code for ${project.title} on GitHub`}
                       >
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View source code for ${project.title} on GitHub (opens in a new tab)`}
+                        >
                           <Github className="mr-2 h-4 w-4" />
                           Source Code
                         </a>

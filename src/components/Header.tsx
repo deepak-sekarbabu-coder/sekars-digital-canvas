@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Moon, Sun } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Menu, Moon, Sun, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface HeaderProps {
   toggleDarkMode: () => void;
@@ -64,18 +64,41 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
                 {item.label}
               </button>
             ))}
-            <Button variant="outline" size="icon" onClick={toggleDarkMode} className="ml-4">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={toggleDarkMode}
+              className="ml-4"
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
               {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              <span className="sr-only">
+                {isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              </span>
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-2 md:hidden">
-            <Button variant="outline" size="icon" onClick={toggleDarkMode}>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={toggleDarkMode}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
               {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              <span className="sr-only">
+                {isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              </span>
             </Button>
-            <Button variant="outline" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            >
               {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
             </Button>
           </div>
         </div>
