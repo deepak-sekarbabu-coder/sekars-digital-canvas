@@ -56,7 +56,7 @@ const Experience = () => {
       client: ['JP Morgan Chase(CoreLogic) & Telia Finland'],
       responsibilities: [
         'Significantly elevated DevOps maturity for the B2B Portal project by spearheading the implementation of robust CI/CD pipelines, rigorous Sonar security scanning, comprehensive test automation and real-time stakeholder reporting for every release.',
-        "Played a pivotal role in the development of multiple microservices to facilitate integration between diverse systems, adhering to TM Forum's API standards. These efforts contributed to improved interoperability and data exchange across the organization."
+        "Played a pivotal role in the development of multiple microservices to facilitate integration between diverse systems, adhering to TM Forum's API standards. These efforts contributed to improved interoperability and data exchange across the organization.",
         "Collaborate with cross-functional teams to deliver high-quality software solutions.",
         'Expertly integrated and implemented APIGEE proxies with various end systems, serving as the gateway for seamless integration.',
         'Designed and implemented multiple monitoring dashboards, including Grafana and metrics dashboards, to enhance real-time system visibility. Established proactive alerting mechanisms through Splunk for immediate issue detection and resolution.',
