@@ -158,6 +158,7 @@ const About = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <Card className="h-full text-center">
+
                     <CardContent className="p-6">
                       <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                         <item.icon className="h-6 w-6 text-primary" />
