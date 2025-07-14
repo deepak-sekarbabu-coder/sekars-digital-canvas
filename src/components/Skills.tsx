@@ -127,8 +127,8 @@ const Skills = () => {
               <span className="text-gradient">Skills & Expertise</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-              A comprehensive overview of my technical skills, tools and technologies I use to
-              build exceptional software solutions.
+              A comprehensive overview of my technical skills, tools and technologies I use to build
+              exceptional software solutions.
             </p>
           </motion.div>
 
@@ -246,7 +246,9 @@ const Skills = () => {
           >
             <Card className="mt-8">
               <CardHeader>
-                <CardTitle className="text-center">Continuous Learning & Growth</CardTitle>
+                <CardTitle className="text-center">
+                  <span className="text-gradient">Continuous Learning & Growth</span>
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="mb-6 text-muted-foreground">
