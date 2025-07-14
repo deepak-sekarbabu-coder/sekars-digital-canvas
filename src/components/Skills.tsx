@@ -170,7 +170,17 @@ const Skills = () => {
                           <span className="text-sm font-medium">{skill.name}</span>
                           <span className="text-xs text-muted-foreground">{skill.level}%</span>
                         </div>
-                        <Progress value={skill.level} className="h-2" />
+                        <div className="relative">
+                          <Progress
+                            value={skill.level}
+                            className="h-2"
+                            aria-label={`${skill.name} skill level: ${skill.level}%`}
+                            aria-valuenow={skill.level}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            role="progressbar"
+                          />
+                        </div>
                       </motion.div>
                     ))}
                   </CardContent>
@@ -201,7 +211,7 @@ const Skills = () => {
                   <div className="flex flex-wrap gap-2">
                     {tools.map((tool) => (
                       <motion.div key={tool} whileHover={{ scale: 1.1 }}>
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-xs" aria-label={`Tool: ${tool}`}>
                           {tool}
                         </Badge>
                       </motion.div>
@@ -225,7 +235,7 @@ const Skills = () => {
                   <div className="flex flex-wrap gap-2">
                     {softSkills.map((skill) => (
                       <motion.div key={skill} whileHover={{ scale: 1.1 }}>
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-xs" aria-label={`Skill: ${skill}`}>
                           {skill}
                         </Badge>
                       </motion.div>
@@ -257,10 +267,18 @@ const Skills = () => {
                   advanced cloud architectures.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  <Badge variant="secondary">AWS Certified</Badge>
-                  <Badge variant="secondary">Agile Practitioner</Badge>
-                  <Badge variant="secondary">Open Source Contributor</Badge>
-                  <Badge variant="secondary">Tech Community Speaker</Badge>
+                  <Badge variant="secondary" aria-label="AWS Certified">
+                    AWS Certified
+                  </Badge>
+                  <Badge variant="secondary" aria-label="Agile Practitioner">
+                    Agile Practitioner
+                  </Badge>
+                  <Badge variant="secondary" aria-label="Open Source Contributor">
+                    Open Source Contributor
+                  </Badge>
+                  <Badge variant="secondary" aria-label="Tech Community Speaker">
+                    Tech Community Speaker
+                  </Badge>
                 </div>
               </CardContent>
             </Card>

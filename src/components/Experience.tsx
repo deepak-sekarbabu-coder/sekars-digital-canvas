@@ -175,8 +175,8 @@ const Experience = () => {
               <span className="text-gradient">Professional Experience</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-              A journey through my professional career, highlighting key roles, responsibilities
-              and achievements in software development.
+              A journey through my professional career, highlighting key roles, responsibilities and
+              achievements in software development.
             </p>
           </motion.div>
 

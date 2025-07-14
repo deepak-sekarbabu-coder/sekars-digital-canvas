@@ -14,9 +14,9 @@ const Hero = () => {
       transition: {
         staggerChildren: 0.15,
         delayChildren: 0.2,
-      },
+      } as const,
     },
-  };
+  } as const;
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -25,10 +25,10 @@ const Hero = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: 'easeOut',
-      },
+        ease: [0.16, 1, 0.3, 1], // Custom easeOutQuint curve
+      } as const,
     },
-  };
+  } as const;
 
   return (
     <section
@@ -44,11 +44,17 @@ const Hero = () => {
         >
           {/* Profile Image */}
           <motion.div variants={itemVariants} className="mb-8">
-            <img
-              src="/pics/Deepak1.png"
-              alt="Deepak Sekarbabu"
-              className="mx-auto h-32 w-32 rounded-full border-4 border-white object-cover shadow-section sm:h-40 sm:w-40 lg:h-48 lg:w-48"
-            />
+            <picture>
+              <source srcSet="/pics/Deepak1.webp" type="image/webp" />
+              <img
+                src="/pics/Deepak1.webp"
+                alt="Deepak Sekarbabu"
+                className="mx-auto h-32 w-32 rounded-full border-4 border-white object-cover shadow-section sm:h-40 sm:w-40 lg:h-48 lg:w-48"
+                width={192}
+                height={192}
+                loading="eager"
+              />
+            </picture>
           </motion.div>
 
           {/* Main Title */}
@@ -154,6 +160,7 @@ const Hero = () => {
         <button
           onClick={() => scrollToSection('about')}
           className="animate-bounce rounded-full bg-card/50 p-2 shadow-card backdrop-blur-sm transition-all duration-300 hover:shadow-hover"
+          aria-label="Scroll down to next section"
         >
           <ArrowDown className="h-5 w-5 text-primary" />
         </button>

@@ -316,8 +316,13 @@ const Contact = () => {
                         className="w-full justify-start"
                         asChild
                       >
-                        <a href={link.href}>
-                          <link.icon className="mr-2 h-4 w-4" />
+                        <a
+                          href={link.href}
+                          aria-label={`${link.label} (opens in new tab)`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <link.icon className="mr-2 h-4 w-4" aria-hidden="true" />
                           {link.label}
                         </a>
                       </Button>

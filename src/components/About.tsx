@@ -42,7 +42,7 @@ const About = () => {
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeInOut' } },
-  };
+  } as const;
 
   const cardGridVariants = {
     hidden: { opacity: 0 },
@@ -53,12 +53,19 @@ const About = () => {
         delayChildren: 0.2,
       },
     },
-  };
+  } as const;
 
   const cardVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-  };
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1], // Custom easeOutQuint curve
+      },
+    },
+  } as const;
 
   return (
     <motion.section
@@ -130,11 +137,17 @@ const About = () => {
             >
               <Card>
                 <CardContent className="p-0">
-                  <img
-                    src="/pics/Deepak1.png"
-                    alt="Deepak Sekarbabu - Professional"
-                    className="h-50 w-full rounded-lg object-right-bottom"
-                  />
+                  <picture>
+                    <source srcSet="/pics/Deepak1.webp" type="image/webp" />
+                    <img
+                      src="/pics/Deepak1.webp"
+                      alt="Deepak Sekarbabu - Professional"
+                      className="h-50 w-full rounded-lg object-right-bottom"
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                    />
+                  </picture>
                 </CardContent>
               </Card>
             </motion.div>
@@ -158,7 +171,6 @@ const About = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <Card className="h-full text-center">
-
                     <CardContent className="p-6">
                       <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                         <item.icon className="h-6 w-6 text-primary" />

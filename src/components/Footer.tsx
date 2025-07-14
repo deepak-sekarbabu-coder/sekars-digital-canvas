@@ -18,17 +18,37 @@ const Footer = () => {
             <span>© {currentYear} Deepak Sekarbabu</span>
           </div>
 
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#about" className="transition-colors hover:text-primary">
-              About
-            </a>
-            <a href="#contact" className="transition-colors hover:text-primary">
-              Contact
-            </a>
-            <a href="#" className="transition-colors hover:text-primary">
-              Privacy
-            </a>
-          </div>
+          <nav aria-label="Footer navigation">
+            <ul className="flex items-center gap-6 text-sm text-muted-foreground">
+              <li>
+                <a
+                  href="#about"
+                  className="transition-colors hover:text-primary"
+                  aria-label="Navigate to About section"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="transition-colors hover:text-primary"
+                  aria-label="Navigate to Contact section"
+                >
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#privacy"
+                  className="transition-colors hover:text-primary"
+                  aria-label="View Privacy Policy"
+                >
+                  Privacy
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </motion.footer>

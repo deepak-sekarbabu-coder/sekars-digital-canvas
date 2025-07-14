@@ -133,6 +133,7 @@ const Projects = () => {
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute right-4 top-4">
+                      <span className="sr-only">Project status:</span>
                       <Badge className={`${getStatusColor(project.status)} text-white`}>
                         {project.status}
                       </Badge>
@@ -140,8 +141,9 @@ const Projects = () => {
                     {project.highlight && (
                       <div className="absolute left-4 top-4">
                         <Badge className="bg-primary text-primary-foreground">
-                          <Star className="mr-1 h-3 w-3" />
-                          Featured
+                          <Star className="mr-1 h-3 w-3" aria-hidden="true" />
+                          <span className="sr-only">Featured Project:</span>
+                          <span aria-hidden="true">Featured</span>
                         </Badge>
                       </div>
                     )}
@@ -186,13 +188,28 @@ const Projects = () => {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3 pt-4">
-                      <Button size="sm" className="flex-1">
-                        <Play className="mr-2 h-4 w-4" />
-                        Live Demo
+                      <Button
+                        asChild
+                        size="sm"
+                        className="flex-1"
+                        aria-label={`View live demo of ${project.title}`}
+                      >
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <Play className="mr-2 h-4 w-4" />
+                          Live Demo
+                        </a>
                       </Button>
-                      <Button variant="outline" size="sm" className="flex-1">
-                        <Github className="mr-2 h-4 w-4" />
-                        Source Code
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="flex-1"
+                        aria-label={`View source code for ${project.title} on GitHub`}
+                      >
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <Github className="mr-2 h-4 w-4" />
+                          Source Code
+                        </a>
                       </Button>
                     </div>
                   </CardContent>
@@ -221,6 +238,7 @@ const Projects = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              aria-label="View all projects on GitHub (opens in a new tab)"
             >
               <Github className="mr-2 h-5 w-5" />
               View All Projects on GitHub
