@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, BookOpen, Download, Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -110,6 +110,14 @@ const Hero = () => {
             </Button>
           </motion.div>
 
+          {/* Social CTA */}
+          <motion.p
+            variants={itemVariants}
+            className="mb-4 text-base font-medium text-muted-foreground sm:text-lg"
+          >
+            Follow me on social media for updates and tech insights
+          </motion.p>
+
           {/* Social Links */}
           <motion.div
             variants={itemVariants}
@@ -138,6 +146,18 @@ const Hero = () => {
               aria-label="GitHub profile (opens in a new tab)"
             >
               <Github className="h-5 w-5 text-primary" />
+            </motion.a>
+            <motion.a
+              href="https://technologytrendsinjava.blogspot.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-card p-3 shadow-card"
+              whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              aria-label="Java technology blog (opens in a new tab)"
+            >
+              <BookOpen className="h-5 w-5 text-primary" />
             </motion.a>
             <motion.a
               href="mailto:deepak.sekarbabu@tcs.com"

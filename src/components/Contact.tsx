@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Clock, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { BookOpen, Clock, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -386,6 +386,18 @@ const Contact = () => {
                 aria-label="GitHub profile (opens in a new tab)"
               >
                 <Github className="h-5 w-5 text-primary" />
+              </motion.a>
+              <motion.a
+                href="https://technologytrendsinjava.blogspot.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-card p-3 shadow-card"
+                whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+                aria-label="Java technology blog (opens in a new tab)"
+              >
+                <BookOpen className="h-5 w-5 text-primary" />
               </motion.a>
               <motion.a
                 href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL || ''}`}
