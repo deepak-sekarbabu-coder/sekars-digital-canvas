@@ -8,7 +8,7 @@ const About = () => {
       icon: Code,
       title: 'Technical Excellence',
       description:
-        'Passionate about writing clean, efficient, and maintainable code using best practices and modern technologies.',
+        'Passionate about writing clean, efficient and maintainable code using best practices and modern technologies.',
     },
     {
       icon: Zap,
@@ -24,7 +24,7 @@ const About = () => {
     },
     {
       icon: Target,
-      title: 'Results Focused',
+      title: 'Result Focused',
       description:
         'Committed to delivering high-quality solutions that meet business objectives and user needs.',
     },
@@ -67,14 +67,14 @@ const About = () => {
                 </p>
                 <p>
                   I believe in the power of technology to solve real-world problems and improve
-                  people's lives. Whether I'm architecting scalable systems, optimizing performance,
+                  people lives. Whether I'm architecting scalable systems, optimizing performance,
                   or collaborating with cross-functional teams, I bring a strategic mindset and
                   attention to detail to every project.
                 </p>
                 <p>
                   When I'm not coding, you'll find me exploring new technologies, contributing to
                   open-source projects, or mentoring fellow developers. I'm always eager to learn
-                  and share knowledge with the tech community.
+                  and share my knowledge with the tech community.
                 </p>
               </div>
 
@@ -96,7 +96,7 @@ const About = () => {
               <Card className="card-hover">
                 <CardContent className="p-0">
                   <img
-                    src="/pics/Deepak2.jpg"
+                    src="/pics/Deepak1.jpg"
                     alt="Deepak Sekarbabu - Professional"
                     className="h-50 w-full rounded-lg object-right-bottom"
                   />
