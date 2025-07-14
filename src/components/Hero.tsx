@@ -70,7 +70,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-8 text-xl font-light text-muted-foreground sm:text-2xl lg:text-3xl"
           >
-            Professional Software Developer & Technology Enthusiast
+            Professional Full Stack Developer & Technology Enthusiast
           </motion.p>
 
           {/* Description */}
