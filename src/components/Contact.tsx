@@ -195,7 +195,7 @@ const Contact = () => {
               Let's <span className="text-gradient">Connect</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-              I'm always interested in new opportunities, collaborations, and interesting projects.
+              I'm always interested in new opportunities, collaborations and interesting projects.
               Let's discuss how we can work together to bring your ideas to life.
             </p>
           </div>
