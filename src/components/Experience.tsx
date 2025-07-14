@@ -53,18 +53,19 @@ const Experience = () => {
       location: 'Chennai, India & Helsinki, Finland',
       period: '2017 - 2021',
       type: 'Full-time',
-      client: ['JP Morgan Chase(CoreLogic), Telia Finland'],
+      client: ['JP Morgan Chase(CoreLogic) & Telia Finland'],
       responsibilities: [
-        'Significantly elevated DevOps maturity for the B2B Portal project by spearheading the implementation of robust CI/CD pipelines, rigorous Sonar security scanning, comprehensive test automation, and real-time stakeholder reporting for every release.',
-        "Played a pivotal role in the development of multiple microservices to facilitate integration between diverse systems, adhering to TM Forum's API standards. These efforts contributed to improved interoperability and data exchange across the organization.Collaborate with cross-functional teams to deliver high-quality software solutions",
+        'Significantly elevated DevOps maturity for the B2B Portal project by spearheading the implementation of robust CI/CD pipelines, rigorous Sonar security scanning, comprehensive test automation and real-time stakeholder reporting for every release.',
+        "Played a pivotal role in the development of multiple microservices to facilitate integration between diverse systems, adhering to TM Forum's API standards. These efforts contributed to improved interoperability and data exchange across the organization."
+        "Collaborate with cross-functional teams to deliver high-quality software solutions.",
         'Expertly integrated and implemented APIGEE proxies with various end systems, serving as the gateway for seamless integration.',
         'Designed and implemented multiple monitoring dashboards, including Grafana and metrics dashboards, to enhance real-time system visibility. Established proactive alerting mechanisms through Splunk for immediate issue detection and resolution.',
         'Implemented robotic automation for pre-live testing using Robot Framework, consistently reducing manual testing efforts by 2 man-days in each sprint.',
         'Successfully implemented OIDC (OpenID Connect) authentication for the CCUI application using the .NET framework, enhancing security and user access control.',
         'Created LFG data mapping tickets, ensuring accurate and efficient data processing.',
-        "Developed a Plan Change feature to extend the scope of responsibilities within our application, enabling seamless integration of new activities and enhancing the application's functionality and adaptability.",
+        "Developed a Plan Change feature to extend the scope of responsibilities within our application, enabling seamless integration of new activities and enhancing the application functionality and adaptability.",
         'Addressed HMDA (Home Mortgage Disclosure Act) and UCD (Uniform Closing Dataset) compliance tickets, ensuring adherence to regulatory requirements and maintaining compliance within these critical areas.',
-        'Work closely with product managers to translate requirements into technical solutions',
+        'Work closely with product managers to translate requirements into technical solutions.',
       ],
       technologies: [
         'Java 11',
@@ -84,13 +85,13 @@ const Experience = () => {
     },
     {
       title: 'Senior Software Engineer',
-      company: 'Infosys Ltd.',
-      location: 'Chennai, Tamil Nadu, India',
+      company: 'Infosys Ltd',
+      location: 'Chennai, India',
       period: '2015 - 2017',
       type: 'Full-time',
       responsibilities: [
         'Spearheaded a major overhaul of the sales tool to improve the handling of rebate claims within our Promotional Contract Management System. This comprehensive enhancement involved both front-end and back-end modifications, resulting in a more efficient and robust system for managing rebate claims.',
-        'Developed new Jasper Reports tailored to diverse needs within the agreement management system, catering to Customer Review, Internal Reporting, and Bid Allowance tracking for agreements in progress. These additions enhanced reporting capabilities, providing valuable insights and streamlining the agreement management process.',
+        'Developed Jasper Reports tailored to diverse needs within the agreement management system, catering to Customer Review, Internal Reporting and Bid Allowance tracking for agreements in progress. These additions enhanced reporting capabilities, providing valuable insights and streamlining the agreement management process.',
         'Created a Shell Script for automated email notifications on product price changes and new product additions, ensuring timely and accurate communication.',
         'Introduced an in-row archival process using Oracle 12C to enhance application performance, optimizing data management and retrieval.',
         'Migrated several small internal application from Java 6 to Java 8 to avoid security risk',
@@ -116,7 +117,7 @@ const Experience = () => {
     {
       title: 'Software Engineer',
       company: 'Bahwan Cybertek Ltd',
-      location: 'Chennai, Tamil Nadu ,India',
+      location: 'Chennai, India',
       period: '2012 - 2015',
       type: 'Full-time',
       responsibilities: [
@@ -143,7 +144,7 @@ const Experience = () => {
         'MS SQL Server 2008-2012',
         'Maven',
       ],
-      client: ['HDFC Bank Ltd', 'Telbru', 'NCB Bank'],
+      client: ['HDFC Bank Ltd', 'Telbru', '& NCB Bank'],
     },
   ];
 
