@@ -12,12 +12,12 @@ const Experience = () => {
       type: 'Full-time',
       client: ['Telia Finance'],
       responsibilities: [
-        'Acted as a Lead Dev & Security Champion for the team of 6',
+        'Acted as a Lead Dev & Security Champion for the team of 6.',
         'Designed a scalable API solution for seamless integration with migrated COBOL code, facilitating communication between legacy COBOL and new migrated code. Implemented a feature toggle to support smooth transition and testing during the go-live phase.',
-        "Designed and developed Java-based microservices for Asset, Invoicing, and Lifecycle modules, ensuring thorough documentation. These microservices were seamlessly integrated into the company's developer portal to facilitate the smooth onboarding of new customers.",
+        "Designed and developed Java-based microservices for Asset, Invoicing and Lifecycle modules, ensuring thorough documentation. These microservices were seamlessly integrated into the company's developer portal to facilitate the smooth onboarding of new customers.",
         'Designed and developed a cutting-edge solution using the latest technologies to replace a COBOL component responsible for parameter configuration and user role management. Implemented robust auditing logs and created alerting dashboards to ensure comprehensive monitoring and security for the application.',
-        'Played a key role in the optimization of sales tools, emphasizing a customer-centric approach, by leading initiatives that spanned both front-end and back-end improvements',
-        'Migrated a legacy application responsible for viewing past invoices, originally running on Servlet and Lotus Notes, to a modern framework. Simultaneously, revamped the user authentication process by implementing Azure Active Directory (Azure AD) for enhanced security and efficiency.',
+        'Played a key role in the optimization of sales tools, emphasizing a customer-centric approach, by leading initiatives that spanned both front-end and back-end improvements.',
+        'Migrated a legacy application responsible for viewing invoices, originally running on Servlet and Lotus Notes to a modern framework. Simultaneously, revamped the user authentication process by implementing Azure Active Directory (Azure AD) for enhanced security and efficiency.',
         'Designed and developed SharePoint APIs to store and retrieve internal financial documents utilized by various internal applications. Implemented this solution using reactive programming techniques, ensuring efficient and responsive document management.',
       ],
       technologies: [
@@ -157,7 +157,7 @@ const Experience = () => {
               Professional <span className="text-gradient">Experience</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-              A journey through my professional career, highlighting key roles, responsibilities,
+              A journey through my professional career, highlighting key roles, responsibilities
               and achievements in software development.
             </p>
           </div>
