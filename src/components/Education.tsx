@@ -11,9 +11,9 @@ const Education = () => {
       period: '2008 - 2012',
       gpa: '7.84/10.0',
       highlights: [
-        'Graduated with First Class Honours',
-        'Winner of Inter-College Programming Competition (2009)',
-        'Did my final year project on Geo Location alerts using Java',
+        'Graduated with First Class Honours.',
+        'Winner of Inter-College Programming Competition (2009).',
+        'Did my final year project on Geo Location alerts using Java.',
       ],
       coursework: [
         'Java',
@@ -31,7 +31,7 @@ const Education = () => {
       location: 'Chennai, India',
       period: '2006 - 2008',
       percentage: '86%',
-      highlights: ['Graduated with First Class Honors', 'Sports Chairman of the school'],
+      highlights: ['Graduated with First Class Honors.', 'Sports Chairman of the school.'],
       coursework: ['Physics', 'Chemistry', 'Mathematics', 'English', 'Computer Science'],
     },
   ];
@@ -74,7 +74,7 @@ const Education = () => {
           {/* Section Header */}
           <div className="mb-16 text-center">
             <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
-              Education & <span className="text-gradient">Qualifications</span>
+              <span className="text-gradient">Education</span> & <span className="text-gradient">Qualifications</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
               My academic journey and professional certifications that have shaped my expertise in
