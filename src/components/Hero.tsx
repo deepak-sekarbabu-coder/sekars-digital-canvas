@@ -1,9 +1,33 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Download, Mail, Linkedin, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
   };
 
   return (
@@ -12,36 +36,53 @@ const Hero = () => {
       className="relative flex min-h-screen items-center justify-center bg-gradient-section"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
+        <motion.div
+          className="mx-auto max-w-4xl text-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Profile Image */}
-          <div className="mb-8">
+          <motion.div variants={itemVariants} className="mb-8">
             <img
               src="/pics/Deepak1.png"
               alt="Deepak Sekarbabu"
               className="mx-auto h-32 w-32 rounded-full border-4 border-white object-cover shadow-section sm:h-40 sm:w-40 lg:h-48 lg:w-48"
             />
-          </div>
+          </motion.div>
 
           {/* Main Title */}
-          <h1 className="mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl xl:text-hero">
+          <motion.h1
+            variants={itemVariants}
+            className="mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl xl:text-hero"
+          >
             Hi, I'm <span className="text-gradient">Deepak Sekarbabu</span>
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p className="mb-8 text-xl font-light text-muted-foreground sm:text-2xl lg:text-3xl">
+          <motion.p
+            variants={itemVariants}
+            className="mb-8 text-xl font-light text-muted-foreground sm:text-2xl lg:text-3xl"
+          >
             Professional Software Developer & Technology Enthusiast
-          </p>
+          </motion.p>
 
           {/* Description */}
-          <p className="mx-auto mb-12 max-w-3xl text-base leading-relaxed text-foreground/80 sm:text-lg lg:text-xl">
+          <motion.p
+            variants={itemVariants}
+            className="mx-auto mb-12 max-w-3xl text-base leading-relaxed text-foreground/80 sm:text-lg lg:text-xl"
+          >
             Passionate about creating innovative software solutions and building exceptional user
             experiences. With expertise in modern technologies and a commitment to continuous
             learning, I help organizations achieve their digital goals through thoughtful
             engineering and creative problem-solving.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <motion.div
+            variants={itemVariants}
+            className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          >
             <Button
               size="lg"
               className="bg-primary px-8 py-6 text-lg font-semibold text-primary-foreground shadow-hover hover:bg-primary-hover"
@@ -61,45 +102,62 @@ const Hero = () => {
               <Download className="mr-2 h-5 w-5" />
               Download Resume
             </Button>
-          </div>
+          </motion.div>
 
           {/* Social Links */}
-          <div className="mb-12 flex items-center justify-center gap-6">
-            <a
+          <motion.div
+            variants={itemVariants}
+            className="mb-12 flex items-center justify-center gap-6"
+          >
+            <motion.a
               href="https://www.linkedin.com/in/deepak-sekarbabu-85b67628/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+              className="rounded-full bg-card p-3 shadow-card"
+              whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <Linkedin className="h-6 w-6 text-primary" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="https://github.com/deepak-sekarbabu"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+              className="rounded-full bg-card p-3 shadow-card"
+              whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <Github className="h-5 w-5 text-primary" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="mailto:deepak.sekarbabu@tcs.com"
-              className="rounded-full bg-card p-3 shadow-card transition-all duration-300 hover:scale-110 hover:shadow-hover"
+              className="rounded-full bg-card p-3 shadow-card"
+              whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <Mail className="h-6 w-6 text-primary" />
-            </a>
-          </div>
-        </div>
+            </motion.a>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 transform">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-2 left-1/2 -translate-x-1/2 transform"
+      >
         <button
           onClick={() => scrollToSection('about')}
           className="animate-bounce rounded-full bg-card/50 p-2 shadow-card backdrop-blur-sm transition-all duration-300 hover:shadow-hover"
         >
           <ArrowDown className="h-5 w-5 text-primary" />
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 };

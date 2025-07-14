@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Code, Zap, Users, Target } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const About = () => {
   const highlights = [
@@ -38,8 +39,36 @@ const About = () => {
     'Innovation',
   ];
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeInOut' } },
+  };
+
+  const cardGridVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+  };
+
   return (
-    <section id="about" className="bg-gradient-section py-20">
+    <motion.section
+      id="about"
+      className="bg-gradient-section py-20"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.1 }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
@@ -83,17 +112,23 @@ const About = () => {
                 <h4 className="mb-4 text-lg font-semibold">Core Values</h4>
                 <div className="flex flex-wrap gap-2">
                   {values.map((value) => (
-                    <Badge key={value} variant="secondary" className="px-3 py-1">
-                      {value}
-                    </Badge>
+                    <motion.div key={value} whileHover={{ scale: 1.1 }}>
+                      <Badge variant="secondary" className="px-3 py-1">
+                        {value}
+                      </Badge>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Professional Image */}
-            <div className="relative">
-              <Card className="card-hover">
+            <motion.div
+              className="relative"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card>
                 <CardContent className="p-0">
                   <img
                     src="/pics/Deepak1.png"
@@ -102,29 +137,42 @@ const About = () => {
                   />
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           </div>
 
           {/* What I Bring */}
           <div>
             <h3 className="mb-12 text-center text-2xl font-bold">What I Bring to the Table</h3>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <motion.div
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+              variants={cardGridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+            >
               {highlights.map((item, index) => (
-                <Card key={index} className="card-hover text-center">
-                  <CardContent className="p-6">
-                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                      <item.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h4 className="mb-3 text-lg font-semibold">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </Card>
+                <motion.div
+                  key={index}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, scale: 1.03 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Card className="h-full text-center">
+                    <CardContent className="p-6">
+                      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                        <item.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <h4 className="mb-3 text-lg font-semibold">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
