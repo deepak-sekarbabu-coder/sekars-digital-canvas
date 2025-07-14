@@ -45,7 +45,7 @@ const About = () => {
           {/* Section Header */}
           <div className="mb-16 text-center">
             <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
-              About <span className="text-gradient">Me</span>
+              <span className="text-gradient">About Me</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
               I'm a dedicated software developer with a passion for creating meaningful technology
