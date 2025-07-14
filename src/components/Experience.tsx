@@ -155,7 +155,7 @@ const Experience = () => {
           {/* Section Header */}
           <div className="mb-16 text-center">
             <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
-              Professional <span className="text-gradient">Experience</span>
+             <span className="text-gradient">Professional Experience</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
               A journey through my professional career, highlighting key roles, responsibilities
