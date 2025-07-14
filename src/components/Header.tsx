@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Moon, Sun } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface HeaderProps {
   toggleDarkMode: () => void;
@@ -33,7 +34,10 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
   ];
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'border-b border-border bg-background/80 shadow-card backdrop-blur-md'
@@ -91,7 +95,7 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
           </nav>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 };
 

@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github, Play, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Projects = () => {
   const projects = [
@@ -94,7 +95,13 @@ const Projects = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
-          <div className="mb-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 text-center"
+          >
             <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
               Featured <span className="text-gradient">Projects</span>
             </h2>
@@ -102,92 +109,106 @@ const Projects = () => {
               A showcase of my recent work, demonstrating my skills in full-stack development,
               problem-solving, and creating user-centered solutions.
             </p>
-          </div>
+          </motion.div>
 
           {/* Projects Grid */}
           <div className="grid gap-8 lg:grid-cols-2">
             {projects.map((project, index) => (
-              <Card
+              <motion.div
                 key={index}
-                className={`card-hover overflow-hidden ${project.highlight ? 'ring-2 ring-primary/20' : ''}`}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                whileHover={{ scale: 1.03, y: -5 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute right-4 top-4">
-                    <Badge className={`${getStatusColor(project.status)} text-white`}>
-                      {project.status}
-                    </Badge>
-                  </div>
-                  {project.highlight && (
-                    <div className="absolute left-4 top-4">
-                      <Badge className="bg-primary text-primary-foreground">
-                        <Star className="mr-1 h-3 w-3" />
-                        Featured
+                <Card
+                  className={`card-hover h-full overflow-hidden ${project.highlight ? 'ring-2 ring-primary/20' : ''}`}
+                >
+                  {/* Project Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute right-4 top-4">
+                      <Badge className={`${getStatusColor(project.status)} text-white`}>
+                        {project.status}
                       </Badge>
                     </div>
-                  )}
-                </div>
-
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between">
-                    <span>{project.title}</span>
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">{project.description}</p>
-
-                  {/* Technologies */}
-                  <div>
-                    <h4 className="mb-2 text-sm font-semibold">Technologies Used:</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="outline" className="text-xs">
-                          {tech}
+                    {project.highlight && (
+                      <div className="absolute left-4 top-4">
+                        <Badge className="bg-primary text-primary-foreground">
+                          <Star className="mr-1 h-3 w-3" />
+                          Featured
                         </Badge>
-                      ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <CardHeader>
+                    <CardTitle className="flex items-center justify-between">
+                      <span>{project.title}</span>
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground">{project.description}</p>
+
+                    {/* Technologies */}
+                    <div>
+                      <h4 className="mb-2 text-sm font-semibold">Technologies Used:</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {project.technologies.map((tech) => (
+                          <Badge key={tech} variant="outline" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Key Features */}
-                  <div>
-                    <h4 className="mb-2 text-sm font-semibold">Key Features:</h4>
-                    <ul className="space-y-1">
-                      {project.features.slice(0, 3).map((feature, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2 text-sm text-muted-foreground"
-                        >
-                          <div className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    {/* Key Features */}
+                    <div>
+                      <h4 className="mb-2 text-sm font-semibold">Key Features:</h4>
+                      <ul className="space-y-1">
+                        {project.features.slice(0, 3).map((feature, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2 text-sm text-muted-foreground"
+                          >
+                            <div className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-3 pt-4">
-                    <Button size="sm" className="flex-1">
-                      <Play className="mr-2 h-4 w-4" />
-                      Live Demo
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex-1">
-                      <Github className="mr-2 h-4 w-4" />
-                      Source Code
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                    {/* Action Buttons */}
+                    <div className="flex gap-3 pt-4">
+                      <Button size="sm" className="flex-1">
+                        <Play className="mr-2 h-4 w-4" />
+                        Live Demo
+                      </Button>
+                      <Button variant="outline" size="sm" className="flex-1">
+                        <Github className="mr-2 h-4 w-4" />
+                        Source Code
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
 
           {/* Additional Projects CTA */}
-          <div className="mt-12 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12 text-center"
+          >
             <p className="mb-6 text-muted-foreground">
               Want to see more of my work? Check out my GitHub profile for additional projects and
               contributions.
@@ -201,7 +222,7 @@ const Projects = () => {
               <Github className="mr-2 h-5 w-5" />
               View All Projects on GitHub
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
