@@ -68,7 +68,7 @@ const Hero = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="mb-8 text-xl font-light text-muted-foreground sm:text-2xl lg:text-3xl"
+            className="mb-8 text-xl font-extrabold text-foreground/80 dark:text-muted-foreground sm:text-2xl lg:text-3xl"
           >
             Professional Full Stack Developer & Technology Enthusiast
           </motion.p>
