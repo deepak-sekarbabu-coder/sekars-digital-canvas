@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDown, BookOpen, Download, Github, Linkedin, Mail } from 'lucide-react';
+import Scene3D from '@/components/3d/Scene3D';
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -33,9 +34,13 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center bg-gradient-section"
+      className="relative flex min-h-screen items-center justify-center bg-gradient-section overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0">
+        <Scene3D className="w-full h-full" />
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           variants={containerVariants}

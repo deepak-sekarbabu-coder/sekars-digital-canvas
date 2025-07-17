@@ -3,6 +3,10 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Brain, Code, Cloud, Database, GitBranch, Palette, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import { Suspense } from 'react';
+import InteractiveSkillsOrb from '@/components/3d/InteractiveSkillsOrb';
 
 const Skills = () => {
   const skillCategories = [
@@ -98,6 +102,17 @@ const Skills = () => {
     'Technical Writing',
   ];
 
+  const skillsFor3D = [
+    { name: 'React', color: '#61dafb' },
+    { name: 'Java', color: '#f89820' },
+    { name: 'Spring', color: '#6db33f' },
+    { name: 'Docker', color: '#0db7ed' },
+    { name: 'AWS', color: '#ff9900' },
+    { name: 'PostgreSQL', color: '#336791' },
+    { name: 'TypeScript', color: '#3178c6' },
+    { name: 'GraphQL', color: '#e10098' },
+  ];
+
   const gridVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -187,6 +202,49 @@ const Skills = () => {
                 </Card>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* 3D Skills Visualization */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="mb-12"
+          >
+            <Card className="overflow-hidden">
+              <CardHeader>
+                <CardTitle className="text-center">
+                  <span className="text-gradient">Interactive Skills Universe</span>
+                </CardTitle>
+                <p className="text-center text-sm text-muted-foreground">
+                  Explore my core technologies in 3D space. Click and drag to interact!
+                </p>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="h-96 w-full">
+                  <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
+                    <Suspense fallback={null}>
+                      <ambientLight intensity={0.5} />
+                      <pointLight position={[10, 10, 10]} intensity={1} />
+                      <pointLight position={[-10, -10, -10]} intensity={0.5} color="#6366f1" />
+                      <InteractiveSkillsOrb 
+                        skills={skillsFor3D}
+                        onSkillClick={(skill) => console.log(`Clicked on ${skill}`)}
+                      />
+                      <OrbitControls 
+                        enableZoom={true}
+                        enablePan={false}
+                        autoRotate
+                        autoRotateSpeed={1}
+                        minDistance={5}
+                        maxDistance={15}
+                      />
+                    </Suspense>
+                  </Canvas>
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
 
           {/* Tools & Technologies */}
