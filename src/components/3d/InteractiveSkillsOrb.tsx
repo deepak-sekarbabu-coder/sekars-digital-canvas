@@ -51,11 +51,10 @@ const SkillOrb = ({ position, skill, color, onClick }: SkillOrbProps) => {
       
       <Text
         position={[0, 0, 0.9]}
-        fontSize={0.2}
+        fontSize={0.15}
         color="white"
         anchorX="center"
         anchorY="middle"
-        font="/fonts/Inter-Bold.woff"
       >
         {skill}
       </Text>
