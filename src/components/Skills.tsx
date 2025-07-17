@@ -204,7 +204,7 @@ const Skills = () => {
             ))}
           </motion.div>
 
-          {/* 3D Skills Visualization */}
+          {/* 3D Skills Visualization - Temporarily Disabled */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -215,33 +215,24 @@ const Skills = () => {
             <Card className="overflow-hidden">
               <CardHeader>
                 <CardTitle className="text-center">
-                  <span className="text-gradient">Interactive Skills Universe</span>
+                  <span className="text-gradient">Interactive Skills</span>
                 </CardTitle>
                 <p className="text-center text-sm text-muted-foreground">
-                  Explore my core technologies in 3D space. Click and drag to interact!
+                  3D visualization temporarily disabled for stability
                 </p>
               </CardHeader>
-              <CardContent className="p-0">
-                <div className="h-96 w-full">
-                  <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
-                    <Suspense fallback={null}>
-                      <ambientLight intensity={0.5} />
-                      <pointLight position={[10, 10, 10]} intensity={1} />
-                      <pointLight position={[-10, -10, -10]} intensity={0.5} color="#6366f1" />
-                      <InteractiveSkillsOrb 
-                        skills={skillsFor3D}
-                        onSkillClick={(skill) => console.log(`Clicked on ${skill}`)}
-                      />
-                      <OrbitControls 
-                        enableZoom={true}
-                        enablePan={false}
-                        autoRotate
-                        autoRotateSpeed={1}
-                        minDistance={5}
-                        maxDistance={15}
-                      />
-                    </Suspense>
-                  </Canvas>
+              <CardContent>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {skillsFor3D.map((skill) => (
+                    <Badge 
+                      key={skill.name} 
+                      variant="outline" 
+                      className="text-sm"
+                      style={{ borderColor: skill.color, color: skill.color }}
+                    >
+                      {skill.name}
+                    </Badge>
+                  ))}
                 </div>
               </CardContent>
             </Card>
