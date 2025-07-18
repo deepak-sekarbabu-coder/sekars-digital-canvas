@@ -91,7 +91,7 @@ const InteractiveSkillsOrb = ({ skills, onSkillClick }: InteractiveSkillsOrbProp
           return null;
         }
         const angle = (index / skills.length) * Math.PI * 2;
-        const radius = 3;
+        const radius = 5; // Increased spacing between bubbles
         const x = Math.cos(angle) * radius;
         const z = Math.sin(angle) * radius;
         const y = Math.sin(angle * 2) * 0.5;

@@ -103,12 +103,23 @@ const Skills = () => {
   ];
 
   const skillsFor3D = [
-    { name: 'React', color: '#61dafb' },
     { name: 'Java', color: '#f89820' },
     { name: 'Spring', color: '#6db33f' },
     { name: 'Docker', color: '#0db7ed' },
-    { name: 'AWS', color: '#ff9900' },
+    { name: 'Kubernetes', color: '#326ce5' },
+    { name: 'Microservices', color: '#f0db4f' },
+    { name: 'REST APIs', color: '#ff6c37' },
+    { name: 'GraphQL', color: '#e10098' },
+    { name: 'React/Next.js', color: '#61dafb' },
+    { name: 'JavaScript', color: '#f7df1e' },
+    { name: 'HTML5', color: '#e34c26' },
+    { name: 'CSS3', color: '#1572b6' },
+    { name: 'Tailwind CSS', color: '#38bdf8' },
+    { name: 'Oracle', color: '#f80000' },
+    { name: 'MySQL', color: '#4479a1' },
     { name: 'PostgreSQL', color: '#336791' },
+    { name: 'React', color: '#61dafb' },
+    { name: 'AWS', color: '#ff9900' },
     { name: 'TypeScript', color: '#3178c6' },
     { name: 'GraphQL', color: '#e10098' },
   ];
