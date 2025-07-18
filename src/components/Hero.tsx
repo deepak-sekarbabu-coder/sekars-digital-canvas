@@ -34,13 +34,13 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center bg-gradient-section overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-section"
     >
       {/* 3D Background - Temporarily Disabled */}
       {/* <div className="absolute inset-0 z-0">
         <Scene3D className="w-full h-full" />
       </div> */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           variants={containerVariants}

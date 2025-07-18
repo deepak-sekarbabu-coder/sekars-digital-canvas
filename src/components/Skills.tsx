@@ -1,12 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Brain, Code, Cloud, Database, GitBranch, Palette, Settings } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import { Suspense } from 'react';
 import InteractiveSkillsOrb from '@/components/3d/InteractiveSkillsOrb';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { OrbitControls } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { motion } from 'framer-motion';
+import { Brain, Cloud, Code, Database, Settings } from 'lucide-react';
+import { Suspense } from 'react';
 
 const Skills = () => {
   const skillCategories = [
@@ -204,7 +204,7 @@ const Skills = () => {
             ))}
           </motion.div>
 
-          {/* 3D Skills Visualization - Temporarily Disabled */}
+          {/* 3D Skills Visualization - Interactive */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -218,21 +218,24 @@ const Skills = () => {
                   <span className="text-gradient">Interactive Skills</span>
                 </CardTitle>
                 <p className="text-center text-sm text-muted-foreground">
-                  3D visualization temporarily disabled for stability
+                  Explore my core skills in 3D! (Drag to rotate)
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {skillsFor3D.map((skill) => (
-                    <Badge 
-                      key={skill.name} 
-                      variant="outline" 
-                      className="text-sm"
-                      style={{ borderColor: skill.color, color: skill.color }}
+                <div className="flex h-96 w-full items-center justify-center">
+                  <Suspense
+                    fallback={<div className="w-full text-center">Loading 3D Skills...</div>}
+                  >
+                    <Canvas
+                      camera={{ position: [0, 0, 8], fov: 50 }}
+                      style={{ width: '100%', height: '100%' }}
                     >
-                      {skill.name}
-                    </Badge>
-                  ))}
+                      <ambientLight intensity={0.7} />
+                      <directionalLight position={[5, 5, 5]} intensity={0.7} />
+                      <InteractiveSkillsOrb skills={skillsFor3D} />
+                      <OrbitControls enablePan={false} />
+                    </Canvas>
+                  </Suspense>
                 </div>
               </CardContent>
             </Card>

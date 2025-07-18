@@ -24,9 +24,9 @@ const FloatingCube = ({ position, color, scale = 1, speed = 1 }: FloatingShapePr
     <Float speed={speed} rotationIntensity={0.3} floatIntensity={0.5}>
       <mesh ref={meshRef} position={position} scale={scale}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial 
-          color={color} 
-          transparent 
+        <meshStandardMaterial
+          color={color}
+          transparent
           opacity={0.7}
           roughness={0.3}
           metalness={0.7}
@@ -50,9 +50,9 @@ const FloatingOctahedron = ({ position, color, scale = 1, speed = 1 }: FloatingS
     <Float speed={speed * 0.8} rotationIntensity={0.4} floatIntensity={0.3}>
       <mesh ref={meshRef} position={position} scale={scale}>
         <octahedronGeometry args={[1]} />
-        <meshStandardMaterial 
-          color={color} 
-          transparent 
+        <meshStandardMaterial
+          color={color}
+          transparent
           opacity={0.6}
           roughness={0.2}
           metalness={0.8}
@@ -76,9 +76,9 @@ const FloatingTorus = ({ position, color, scale = 1, speed = 1 }: FloatingShapeP
     <Float speed={speed * 1.2} rotationIntensity={0.2} floatIntensity={0.7}>
       <mesh ref={meshRef} position={position} scale={scale}>
         <torusGeometry args={[1, 0.4, 8, 24]} />
-        <meshStandardMaterial 
-          color={color} 
-          transparent 
+        <meshStandardMaterial
+          color={color}
+          transparent
           opacity={0.5}
           roughness={0.4}
           metalness={0.6}
@@ -99,13 +99,13 @@ const FloatingGeometry = () => {
       {/* Floating shapes */}
       <FloatingCube position={[-4, 2, -3]} color="#6366f1" scale={0.8} speed={1.2} />
       <FloatingCube position={[4, -1, -4]} color="#8b5cf6" scale={0.6} speed={0.8} />
-      
+
       <FloatingOctahedron position={[3, 3, -2]} color="#06b6d4" scale={0.7} speed={1.5} />
       <FloatingOctahedron position={[-3, -2, -5]} color="#10b981" scale={0.5} speed={0.9} />
-      
+
       <FloatingTorus position={[0, -3, -6]} color="#f59e0b" scale={0.4} speed={1.1} />
       <FloatingTorus position={[-5, 1, -3]} color="#ef4444" scale={0.6} speed={0.7} />
-      
+
       {/* Additional smaller shapes for depth */}
       <FloatingCube position={[6, 0, -8]} color="#6366f1" scale={0.3} speed={1.8} />
       <FloatingOctahedron position={[-6, 4, -7]} color="#8b5cf6" scale={0.4} speed={1.3} />

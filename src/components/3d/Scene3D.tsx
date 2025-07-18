@@ -16,18 +16,10 @@ const Scene3D = ({ className = '' }: Scene3DProps) => {
         gl={{ alpha: true, antialias: true }}
       >
         <Suspense fallback={null}>
-          <Stars 
-            radius={100} 
-            depth={50} 
-            count={1000} 
-            factor={4} 
-            saturation={0} 
-            fade 
-            speed={1}
-          />
+          <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
           <FloatingGeometry />
-          <OrbitControls 
-            enableZoom={false} 
+          <OrbitControls
+            enableZoom={false}
             enablePan={false}
             autoRotate
             autoRotateSpeed={0.5}

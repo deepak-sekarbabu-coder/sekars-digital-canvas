@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import { Text } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import { useRef, useState } from 'react';
 import { Mesh } from 'three';
-import { Text, Sphere } from '@react-three/drei';
 
 interface SkillOrbProps {
   position: [number, number, number];
@@ -11,6 +11,11 @@ interface SkillOrbProps {
 }
 
 const SkillOrb = ({ position, skill, color, onClick }: SkillOrbProps) => {
+  // Defensive: skip rendering if skill or color is missing
+  if (!skill || !color) {
+    console.warn('SkillOrb: Missing skill or color', { skill, color });
+    return null;
+  }
   const orbRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -19,43 +24,39 @@ const SkillOrb = ({ position, skill, color, onClick }: SkillOrbProps) => {
     if (orbRef.current) {
       const scale = hovered ? 1.2 : clicked ? 0.9 : 1;
       orbRef.current.scale.lerp({ x: scale, y: scale, z: scale } as any, 0.1);
-      
+
       if (!hovered && !clicked) {
         orbRef.current.rotation.y += 0.01;
-        orbRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime + position[0]) * 0.1;
+        orbRef.current.position.y =
+          position[1] + Math.sin(state.clock.elapsedTime + position[0]) * 0.1;
       }
     }
   });
 
   return (
     <group position={position}>
-      <Sphere
+      <mesh
         ref={orbRef}
-        args={[0.8]}
+        position={[0, 0, 0]}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         onPointerDown={() => setClicked(true)}
         onPointerUp={() => setClicked(false)}
         onClick={onClick}
       >
-        <meshStandardMaterial 
-          color={color} 
-          transparent 
+        <sphereGeometry args={[0.8]} />
+        <meshStandardMaterial
+          color={color}
+          transparent
           opacity={0.8}
           roughness={0.2}
           metalness={0.8}
           emissive={hovered ? color : '#000000'}
           emissiveIntensity={hovered ? 0.3 : 0}
         />
-      </Sphere>
-      
-      <Text
-        position={[0, 0, 0.9]}
-        fontSize={0.15}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
+      </mesh>
+
+      <Text position={[0, 0, 0.9]} fontSize={0.15} color="white" anchorX="center" anchorY="middle">
         {skill}
       </Text>
     </group>
@@ -70,6 +71,12 @@ interface InteractiveSkillsOrbProps {
 const InteractiveSkillsOrb = ({ skills, onSkillClick }: InteractiveSkillsOrbProps) => {
   const groupRef = useRef<any>(null);
 
+  // Defensive: ensure skills is a non-empty array
+  if (!Array.isArray(skills) || skills.length === 0) {
+    console.warn('InteractiveSkillsOrb: skills prop is empty or not an array', skills);
+    return null;
+  }
+
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.005;
@@ -79,6 +86,10 @@ const InteractiveSkillsOrb = ({ skills, onSkillClick }: InteractiveSkillsOrbProp
   return (
     <group ref={groupRef}>
       {skills.map((skill, index) => {
+        if (!skill || typeof skill.name !== 'string' || typeof skill.color !== 'string') {
+          console.warn('InteractiveSkillsOrb: Malformed skill entry', skill);
+          return null;
+        }
         const angle = (index / skills.length) * Math.PI * 2;
         const radius = 3;
         const x = Math.cos(angle) * radius;
