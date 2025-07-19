@@ -1,6 +1,6 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
+# Sample workflow for building and deploying a Next.js static site to GitHub Pages
 #
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
+# To get started with Next.js static exports: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
 #
 name: Deploy Next.js site to Pages
 
@@ -31,36 +31,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: pnpm
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Install pnpm
+        run: corepack enable && corepack prepare pnpm@10.13.1 --activate  # Matches your Vercel log's pnpm version
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: pnpm install
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: pnpm run build  # Assumes your package.json has "build": "next build"
       - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
+        run: pnpm next export  # Generates static files in ./out
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
