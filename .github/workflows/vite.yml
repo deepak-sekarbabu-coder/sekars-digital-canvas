@@ -54,13 +54,17 @@ jobs:
             mv package.tmp.json package.json
           fi
       - name: Install dependencies
-        run: pnpm install  # Removed --frozen-lockfile to handle missing lockfile; will generate if needed
+        run: pnpm install  # Will generate lockfile if needed
+      - name: Debug PATH and binaries
+        run: |
+          echo "Current PATH: $PATH"
+          ls -la node_modules/.bin || echo "node_modules/.bin not found"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Next.js
         run: pnpm run build  # Assumes your package.json has "build": "next build"
       - name: Static HTML export with Next.js
-        run: pnpm next export  # Generates static files in ./out
+        run: pnpm exec next export  # Uses 'exec' to properly invoke 'next' from node_modules
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
