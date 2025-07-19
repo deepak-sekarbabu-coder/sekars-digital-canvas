@@ -47,10 +47,16 @@ jobs:
             ~/.pnpm-store
             **/node_modules
           restore-keys: ${{ runner.os }}-pnpm-
+      - name: Set packageManager if missing
+        run: |
+          if ! grep -q '"packageManager"' package.json; then
+            jq '. + { "packageManager": "pnpm@10.13.1" }' package.json > package.tmp.json
+            mv package.tmp.json package.json
+          fi
+      - name: Install dependencies
+        run: pnpm install  # Removed --frozen-lockfile to handle missing lockfile; will generate if needed
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile  # Use --frozen-lockfile for consistency, like Vercel's behavior
       - name: Build with Next.js
         run: pnpm run build  # Assumes your package.json has "build": "next build"
       - name: Static HTML export with Next.js
