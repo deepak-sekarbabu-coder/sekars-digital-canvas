@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 
 const PerformanceMonitor = () => {
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'performance' in window) {
+    // Only run performance monitoring in development
+    if (import.meta.env.DEV && typeof window !== 'undefined' && 'performance' in window) {
       // Monitor Core Web Vitals
       const observer = new PerformanceObserver((list) => {
         list.getEntries().forEach((entry) => {

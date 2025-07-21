@@ -13,7 +13,9 @@ interface SkillOrbProps {
 const SkillOrb = ({ position, skill, color, onClick }: SkillOrbProps) => {
   // Defensive: skip rendering if skill or color is missing
   if (!skill || !color) {
-    console.warn('SkillOrb: Missing skill or color', { skill, color });
+    if (import.meta.env.DEV) {
+      console.warn('SkillOrb: Missing skill or color', { skill, color });
+    }
     return null;
   }
   const orbRef = useRef<Mesh>(null);
@@ -73,7 +75,9 @@ const InteractiveSkillsOrb = ({ skills, onSkillClick }: InteractiveSkillsOrbProp
 
   // Defensive: ensure skills is a non-empty array
   if (!Array.isArray(skills) || skills.length === 0) {
-    console.warn('InteractiveSkillsOrb: skills prop is empty or not an array', skills);
+    if (import.meta.env.DEV) {
+      console.warn('InteractiveSkillsOrb: skills prop is empty or not an array', skills);
+    }
     return null;
   }
 
@@ -87,7 +91,9 @@ const InteractiveSkillsOrb = ({ skills, onSkillClick }: InteractiveSkillsOrbProp
     <group ref={groupRef}>
       {skills.map((skill, index) => {
         if (!skill || typeof skill.name !== 'string' || typeof skill.color !== 'string') {
-          console.warn('InteractiveSkillsOrb: Malformed skill entry', skill);
+          if (import.meta.env.DEV) {
+            console.warn('InteractiveSkillsOrb: Malformed skill entry', skill);
+          }
           return null;
         }
         const angle = (index / skills.length) * Math.PI * 2;

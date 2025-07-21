@@ -16,7 +16,10 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    // Use passive listener for better performance and bfcache compatibility
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

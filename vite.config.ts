@@ -31,4 +31,8 @@ export default defineConfig(({ mode }) => ({
   esbuild: {
     drop: mode === 'production' ? ['console', 'debugger'] : [],
   },
+  define: {
+    // Help with bfcache by ensuring proper environment detection
+    __DEV__: mode === 'development',
+  },
 }));

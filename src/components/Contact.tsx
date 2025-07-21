@@ -60,7 +60,9 @@ const Contact = () => {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        console.error('EmailJS environment variables are not configured.');
+        if (import.meta.env.DEV) {
+          console.error('EmailJS environment variables are not configured.');
+        }
         toast({
           title: 'Configuration Error',
           description:
@@ -89,7 +91,9 @@ const Contact = () => {
       // Reset form
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      console.error('Error sending email:', error);
+      if (import.meta.env.DEV) {
+        console.error('Error sending email:', error);
+      }
       toast({
         title: 'Error',
         description: 'Failed to send message. Please try again later.',

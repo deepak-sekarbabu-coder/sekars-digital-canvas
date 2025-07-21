@@ -1,6 +1,6 @@
 // Performance monitoring utilities
 export const measurePerformance = (name: string, fn: () => void) => {
-  if (typeof window !== 'undefined' && window.performance) {
+  if (typeof window !== 'undefined' && window.performance && import.meta.env.DEV) {
     const start = performance.now();
     fn();
     const end = performance.now();
