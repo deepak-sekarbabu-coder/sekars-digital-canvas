@@ -48,7 +48,7 @@ const Hero = () => {
           animate="visible"
         >
           {/* Profile Image */}
-          <motion.div variants={itemVariants} className="mb-8">
+          <motion.div variants={itemVariants} className="mb-8 pt-8 sm:pt-0">
             <picture>
               <source srcSet="/pics/Deepak1.webp" type="image/webp" />
               <img

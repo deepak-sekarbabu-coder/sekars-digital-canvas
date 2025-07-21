@@ -47,10 +47,10 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-4 pr-4 sm:pr-0">
           <div
-            className="text-gradient cursor-pointer text-xl font-bold"
+            className="text-gradient min-w-0 flex-shrink cursor-pointer truncate text-lg font-bold sm:text-xl"
             onClick={() => scrollToSection('hero')}
           >
             Deepak Sekarbabu
@@ -82,11 +82,12 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-2 md:hidden">
+          <div className="mr-4 flex items-center gap-2 md:hidden">
             <Button
               variant="outline"
               size="icon"
               onClick={toggleDarkMode}
+              className="h-9 w-9 shrink-0"
               aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -98,6 +99,7 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
               variant="outline"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="h-9 w-9 shrink-0"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -108,17 +110,25 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="space-y-2 pb-4 md:hidden">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full rounded-md px-4 py-2 text-left text-foreground transition-colors duration-200 hover:bg-muted hover:text-primary"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          <motion.nav
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute left-0 right-0 top-full space-y-1 border-b border-border bg-background/95 py-4 shadow-card backdrop-blur-md md:hidden"
+          >
+            <div className="container mx-auto px-3 sm:px-6 lg:px-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full rounded-md px-4 py-3 text-left text-foreground transition-colors duration-200 hover:bg-muted hover:text-primary"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </motion.nav>
         )}
       </div>
     </motion.header>
