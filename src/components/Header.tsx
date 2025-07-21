@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { scrollToElement, scrollToTop } from '@/utils/smoothScroll';
 
 interface HeaderProps {
   toggleDarkMode: () => void;
@@ -38,7 +39,11 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (id === 'hero') {
+      scrollToTop();
+    } else {
+      scrollToElement(id);
+    }
     setIsMenuOpen(false);
   };
 

@@ -126,9 +126,10 @@
     overflow-x: hidden;
   }
 
-  /* Smooth scrolling */
+  /* Smooth scrolling - enhanced for fixed header */
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Account for fixed header height */
   }
 
   /* Custom scrollbar */
@@ -169,5 +170,18 @@
   /* Section backgrounds */
   .section-gradient {
     background: var(--gradient-section);
+  }
+
+  /* Scroll offset utilities for fixed header */
+  .scroll-offset {
+    scroll-margin-top: 5rem; /* 80px - matches header height */
+  }
+
+  .scroll-offset-lg {
+    scroll-margin-top: 6rem; /* 96px - for sections that need more space */
+  }
+
+  .scroll-offset-sm {
+    scroll-margin-top: 4rem; /* 64px - for sections that need less space */
   }
 }

@@ -71,7 +71,7 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="bg-gradient-section py-20"
+      className="scroll-offset bg-gradient-section py-20"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
