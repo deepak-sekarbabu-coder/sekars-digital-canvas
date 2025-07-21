@@ -138,9 +138,9 @@ const About = () => {
               <Card>
                 <CardContent className="p-0">
                   <picture>
-                    <source srcSet="/pics/Deepak1.webp" type="image/webp" />
+                    <source srcSet="./pics/Deepak1.webp" type="image/webp" />
                     <img
-                      src="/pics/Deepak1.webp"
+                      src="./pics/Deepak1.webp"
                       alt="Deepak Sekarbabu - Professional"
                       className="h-50 w-full rounded-lg object-right-bottom"
                       width={800}

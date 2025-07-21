@@ -50,9 +50,9 @@ const Hero = () => {
           {/* Profile Image */}
           <motion.div variants={itemVariants} className="mb-8 pt-8 sm:pt-0">
             <picture>
-              <source srcSet="/pics/Deepak1.webp" type="image/webp" />
+              <source srcSet="./pics/Deepak1.webp" type="image/webp" />
               <img
-                src="/pics/Deepak1.webp"
+                src="./pics/Deepak1.webp"
                 alt="Deepak Sekarbabu"
                 className="mx-auto h-32 w-32 rounded-full border-4 border-white object-cover shadow-section sm:h-40 sm:w-40 lg:h-48 lg:w-48"
                 width={192}
