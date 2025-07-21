@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 interface HeaderProps {
   toggleDarkMode: () => void;
@@ -11,6 +12,19 @@ interface HeaderProps {
 const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const navItems = [
+    { label: 'About', id: 'about' },
+    { label: 'Experience', id: 'experience' },
+    { label: 'Skills', id: 'skills' },
+    { label: 'Education', id: 'education' },
+    { label: 'Contact', id: 'contact' },
+  ];
+
+  // Track active section
+  const activeSection = useActiveSection({
+    sectionIds: ['hero', ...navItems.map((item) => item.id)],
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,13 +42,14 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
     setIsMenuOpen(false);
   };
 
-  const navItems = [
-    { label: 'About', id: 'about' },
-    { label: 'Experience', id: 'experience' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Education', id: 'education' },
-    { label: 'Contact', id: 'contact' },
-  ];
+  // Check if a navigation item is active
+  const isNavItemActive = (itemId: string) => {
+    // Special case: when on hero section, highlight "About" as it's the first nav item
+    if (activeSection === 'hero' && itemId === 'about') {
+      return true;
+    }
+    return activeSection === itemId;
+  };
 
   return (
     <motion.header
@@ -62,9 +77,26 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="font-medium text-foreground transition-colors duration-200 hover:text-primary"
+                className={`relative font-medium transition-all duration-200 ${
+                  isNavItemActive(item.id)
+                    ? 'font-semibold text-primary'
+                    : 'text-foreground hover:text-primary'
+                }`}
               >
                 {item.label}
+                {/* Active indicator */}
+                {isNavItemActive(item.id) && (
+                  <motion.div
+                    layoutId="activeIndicator"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-primary"
+                    initial={false}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  />
+                )}
               </button>
             ))}
             <Button
@@ -122,9 +154,23 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full rounded-md px-4 py-3 text-left text-foreground transition-colors duration-200 hover:bg-muted hover:text-primary"
+                  className={`relative block w-full rounded-md px-4 py-3 text-left transition-all duration-200 ${
+                    isNavItemActive(item.id)
+                      ? 'border-l-2 border-primary bg-primary/10 font-semibold text-primary'
+                      : 'text-foreground hover:bg-muted hover:text-primary'
+                  }`}
                 >
-                  {item.label}
+                  <div className="flex items-center justify-between">
+                    {item.label}
+                    {/* Active indicator for mobile */}
+                    {isNavItemActive(item.id) && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="h-2 w-2 rounded-full bg-primary"
+                      />
+                    )}
+                  </div>
                 </button>
               ))}
             </div>
