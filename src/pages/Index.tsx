@@ -7,9 +7,20 @@ import Skills from '@/components/Skills';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/useSEO';
 
 const Index = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // SEO optimization for the main page
+  useSEO({
+    title: 'Deepak Sekarbabu - Full Stack Developer & Solution Architect | TCS Stockholm',
+    description:
+      'Professional Full Stack Developer with 12+ years experience in Java, Spring Boot, Microservices, React, and Cloud technologies. Currently Assistant Technical Consultant at TCS Stockholm, specializing in enterprise solutions and modern web development.',
+    keywords:
+      'Deepak Sekarbabu, Full Stack Developer, Java Developer, Spring Boot, Microservices, React, TypeScript, Cloud Computing, Solution Architect, TCS, Stockholm, Software Engineer, Assistant Technical Consultant',
+    type: 'profile',
+  });
 
   useEffect(() => {
     // Check for saved theme preference or default to system preference

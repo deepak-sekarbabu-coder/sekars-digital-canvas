@@ -1,8 +1,17 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useSEO } from '@/hooks/useSEO';
 
 const NotFound = () => {
   const location = useLocation();
+
+  // SEO for 404 page - prevent indexing
+  useSEO({
+    title: 'Page Not Found - Deepak Sekarbabu Portfolio',
+    description:
+      "The requested page could not be found. Return to Deepak Sekarbabu's portfolio homepage.",
+    noIndex: true,
+  });
 
   useEffect(() => {
     if (import.meta.env.DEV) {
