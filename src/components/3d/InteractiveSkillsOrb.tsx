@@ -1,7 +1,7 @@
 import { Text } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
-import { Mesh } from 'three';
+import * as THREE from 'three';
 
 interface SkillOrbProps {
   position: [number, number, number];
@@ -11,21 +11,14 @@ interface SkillOrbProps {
 }
 
 const SkillOrb = ({ position, skill, color, onClick }: SkillOrbProps) => {
-  // Defensive: skip rendering if skill or color is missing
-  if (!skill || !color) {
-    if (import.meta.env.DEV) {
-      console.warn('SkillOrb: Missing skill or color', { skill, color });
-    }
-    return null;
-  }
-  const orbRef = useRef<Mesh>(null);
+  const orbRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
 
   useFrame((state) => {
-    if (orbRef.current) {
+    if (orbRef.current && skill && color) {
       const scale = hovered ? 1.2 : clicked ? 0.9 : 1;
-      orbRef.current.scale.lerp({ x: scale, y: scale, z: scale } as any, 0.1);
+      orbRef.current.scale.lerp({ x: scale, y: scale, z: scale }, 0.1);
 
       if (!hovered && !clicked) {
         orbRef.current.rotation.y += 0.01;
@@ -34,6 +27,14 @@ const SkillOrb = ({ position, skill, color, onClick }: SkillOrbProps) => {
       }
     }
   });
+
+  // Defensive: skip rendering if skill or color is missing
+  if (!skill || !color) {
+    if (import.meta.env.DEV) {
+      console.warn('SkillOrb: Missing skill or color', { skill, color });
+    }
+    return null;
+  }
 
   return (
     <group position={position}>
@@ -71,7 +72,13 @@ interface InteractiveSkillsOrbProps {
 }
 
 const InteractiveSkillsOrb = ({ skills, onSkillClick }: InteractiveSkillsOrbProps) => {
-  const groupRef = useRef<any>(null);
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (groupRef.current && Array.isArray(skills) && skills.length > 0) {
+      groupRef.current.rotation.y += 0.005;
+    }
+  });
 
   // Defensive: ensure skills is a non-empty array
   if (!Array.isArray(skills) || skills.length === 0) {
@@ -80,12 +87,6 @@ const InteractiveSkillsOrb = ({ skills, onSkillClick }: InteractiveSkillsOrbProp
     }
     return null;
   }
-
-  useFrame(() => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.005;
-    }
-  });
 
   return (
     <group ref={groupRef}>
