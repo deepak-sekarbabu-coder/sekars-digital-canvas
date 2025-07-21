@@ -118,6 +118,9 @@ This project uses the following environment variables:
 - `npm run preview` - Preview the production build locally
 - `npm run lint` - Run ESLint for code quality checks
 - `npm run format` - Format code using Prettier
+- `npm run optimize-images:validate` - Validate image optimization setup
+- `npm run optimize-images:recommendations` - Show production optimization recommendations
+- `npm run optimize-images` - Generate responsive image sizes (placeholder)
 
 ---
 
@@ -130,6 +133,15 @@ This project uses the following environment variables:
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [EmailJS](https://www.emailjs.com/) - For handling contact form submissions
 - [Lucide Icons](https://lucide.dev/) - Beautiful & consistent icons
+- [Framer Motion](https://www.framer.com/motion/) - Production-ready motion library for React
+
+## Performance Features
+
+- **Responsive Images**: Next.js-like image optimization with lazy loading
+- **SEO Optimization**: Complete meta tags, structured data, and social media integration
+- **Modern Build**: Optimized Vite configuration with code splitting
+- **Accessibility**: WCAG compliant components and navigation
+- **Progressive Enhancement**: Works without JavaScript for core functionality
 
 ---
 

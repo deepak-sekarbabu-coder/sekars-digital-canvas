@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Code, Zap, Users, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Image from '@/components/Image';
 
 const About = () => {
   const highlights = [
@@ -137,17 +138,19 @@ const About = () => {
             >
               <Card>
                 <CardContent className="p-0">
-                  <picture>
-                    <source srcSet="./pics/Deepak1.webp" type="image/webp" />
-                    <img
+                  <div className="h-50 w-full overflow-hidden rounded-lg">
+                    <Image
                       src="./pics/Deepak1.webp"
-                      alt="Deepak Sekarbabu - Professional"
-                      className="h-50 w-full rounded-lg object-right-bottom"
+                      alt="Deepak Sekarbabu"
                       width={800}
                       height={600}
-                      loading="lazy"
+                      className="h-full w-full"
+                      objectFit="cover"
+                      objectPosition="right bottom"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                      placeholder="blur"
                     />
-                  </picture>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>

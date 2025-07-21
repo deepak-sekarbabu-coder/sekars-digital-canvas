@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDown, BookOpen, Download, Github, Linkedin, Mail } from 'lucide-react';
 import Scene3D from '@/components/3d/Scene3D';
+import Image from '@/components/Image';
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -49,17 +50,20 @@ const Hero = () => {
         >
           {/* Profile Image */}
           <motion.div variants={itemVariants} className="mb-8 pt-8 sm:pt-0">
-            <picture>
-              <source srcSet="./pics/Deepak1.webp" type="image/webp" />
-              <img
+            <div className="mx-auto h-32 w-32 sm:h-40 sm:w-40 lg:h-48 lg:w-48">
+              <Image
                 src="./pics/Deepak1.webp"
-                alt="Deepak Sekarbabu"
-                className="mx-auto h-32 w-32 rounded-full border-4 border-white object-cover shadow-section sm:h-40 sm:w-40 lg:h-48 lg:w-48"
+                alt="Deepak Sekarbabu - Professional Profile Photo"
                 width={192}
                 height={192}
-                loading="eager"
+                priority={true}
+                className="rounded-full border-4 border-white shadow-section"
+                objectFit="cover"
+                sizes="(max-width: 640px) 128px, (max-width: 1024px) 160px, 192px"
+                placeholder="blur"
+                preload={true}
               />
-            </picture>
+            </div>
           </motion.div>
 
           {/* Main Title */}

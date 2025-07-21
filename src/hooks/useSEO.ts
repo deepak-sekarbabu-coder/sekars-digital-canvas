@@ -35,7 +35,7 @@ export const useSEO = (options: SEOOptions = {}) => {
 
     // Update meta tags
     const updateMetaTag = (selector: string, content: string) => {
-      let meta = document.querySelector(selector) as HTMLMetaElement;
+      const meta = document.querySelector(selector) as HTMLMetaElement;
       if (meta) {
         meta.setAttribute('content', content);
       }

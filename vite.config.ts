@@ -28,7 +28,11 @@ export default defineConfig(({ mode }) => ({
     },
     target: 'esnext',
     minify: 'esbuild',
+    // Image optimization settings
+    assetsInlineLimit: 4096, // Inline small images as base64
   },
+  // Image optimization for development
+  assetsInclude: ['**/*.webp', '**/*.avif'],
   esbuild: {
     drop: mode === 'production' ? ['console', 'debugger'] : [],
   },
