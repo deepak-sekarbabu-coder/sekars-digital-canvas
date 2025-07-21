@@ -3,117 +3,133 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { motion } from 'framer-motion';
 import { Brain, Cloud, Code, Database, Settings } from 'lucide-react';
+import { memo, useMemo } from 'react';
 
-const Skills = () => {
-  const skillCategories = [
-    {
-      title: 'Backend Development',
-      icon: Database,
-      color: 'text-green-500',
-      id: 'backend',
-      skills: [
-        { name: 'Java', level: 85 },
-        { name: 'Microservices', level: 75 },
-        { name: 'Spring Boot', level: 80 },
-        { name: 'Spring Batch', level: 80 },
-        { name: 'GraphQL', level: 70 },
-        { name: 'Python', level: 40 },
-        { name: 'REST APIs', level: 90 },
-        { name: 'Syncronous API', level: 80 },
-        { name: 'Asyncronous API Reactive', level: 60 },
-      ],
-    },
-    {
-      title: 'Frontend Development',
-      icon: Code,
-      color: 'text-blue-500',
-      id: 'frontend',
-      skills: [
-        { name: 'React/Next.js', level: 60 },
-        { name: 'TypeScript', level: 60 },
-        { name: 'JavaScript (ES6+)', level: 65 },
-        { name: 'HTML5 & CSS3', level: 90 },
-        { name: 'Tailwind CSS', level: 60 },
-        { name: 'JSP', level: 60 },
-        { name: 'Bootstrap', level: 60 },
-        { name: 'Thymeleaf', level: 60 },
-      ],
-    },
-    {
-      title: 'Database & Storage',
-      icon: Database,
-      color: 'text-purple-500',
-      id: 'database',
-      skills: [
-        { name: 'Oracle', level: 85 },
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'MySQL', level: 75 },
-        { name: 'MariaDB', level: 70 },
-        { name: 'SQL Server', level: 70 },
-        { name: 'Domino NotesDB', level: 60 },
-        { name: 'Mongo', level: 40 },
-      ],
-    },
-    {
-      title: 'Cloud & DevOps',
-      icon: Cloud,
-      color: 'text-orange-500',
-      id: 'devops',
-      skills: [
-        { name: 'Docker', level: 75 },
-        { name: 'Docker Compose', level: 60 },
-        { name: 'CI/CD Pipelines', level: 80 },
-        { name: 'Linux/Unix', level: 85 },
-        { name: 'Kubernetes', level: 80 },
-        { name: 'Jenkins', level: 70 },
-        { name: 'AWS Services', level: 70 },
-      ],
-    },
-  ];
+const Skills = memo(() => {
+  const skillCategories = useMemo(
+    () => [
+      {
+        title: 'Backend Development',
+        icon: Database,
+        color: 'text-green-500',
+        id: 'backend',
+        skills: [
+          { name: 'Java', level: 85 },
+          { name: 'Microservices', level: 75 },
+          { name: 'Spring Boot', level: 80 },
+          { name: 'Spring Batch', level: 80 },
+          { name: 'GraphQL', level: 70 },
+          { name: 'Python', level: 40 },
+          { name: 'REST APIs', level: 90 },
+          { name: 'Syncronous API', level: 80 },
+          { name: 'Asyncronous API Reactive', level: 60 },
+        ],
+      },
+      {
+        title: 'Frontend Development',
+        icon: Code,
+        color: 'text-blue-500',
+        id: 'frontend',
+        skills: [
+          { name: 'React/Next.js', level: 60 },
+          { name: 'TypeScript', level: 60 },
+          { name: 'JavaScript (ES6+)', level: 65 },
+          { name: 'HTML5 & CSS3', level: 90 },
+          { name: 'Tailwind CSS', level: 60 },
+          { name: 'JSP', level: 60 },
+          { name: 'Bootstrap', level: 60 },
+          { name: 'Thymeleaf', level: 60 },
+        ],
+      },
+      {
+        title: 'Database & Storage',
+        icon: Database,
+        color: 'text-purple-500',
+        id: 'database',
+        skills: [
+          { name: 'Oracle', level: 85 },
+          { name: 'PostgreSQL', level: 80 },
+          { name: 'MySQL', level: 75 },
+          { name: 'MariaDB', level: 70 },
+          { name: 'SQL Server', level: 70 },
+          { name: 'Domino NotesDB', level: 60 },
+          { name: 'Mongo', level: 40 },
+        ],
+      },
+      {
+        title: 'Cloud & DevOps',
+        icon: Cloud,
+        color: 'text-orange-500',
+        id: 'devops',
+        skills: [
+          { name: 'Docker', level: 75 },
+          { name: 'Docker Compose', level: 60 },
+          { name: 'CI/CD Pipelines', level: 80 },
+          { name: 'Linux/Unix', level: 85 },
+          { name: 'Kubernetes', level: 80 },
+          { name: 'Jenkins', level: 70 },
+          { name: 'AWS Services', level: 70 },
+        ],
+      },
+    ],
+    []
+  );
 
-  const tools = [
-    'Git & GitHub',
-    'GitLab',
-    'Bitbucket',
-    'IntelliJ',
-    'Eclipse',
-    'STS',
-    'GitHub Copilot',
-    'VS Code',
-    'Figma',
-    'Postman',
-    'Jira',
-    'Slack',
-    'Apigee',
-    'DBeawer',
-    'Vite',
-    'ESLint',
-    'Prettier',
-  ];
+  const tools = useMemo(
+    () => [
+      'Git & GitHub',
+      'GitLab',
+      'Bitbucket',
+      'IntelliJ',
+      'Eclipse',
+      'STS',
+      'GitHub Copilot',
+      'VS Code',
+      'Figma',
+      'Postman',
+      'Jira',
+      'Slack',
+      'Apigee',
+      'DBeawer',
+      'Vite',
+      'ESLint',
+      'Prettier',
+    ],
+    []
+  );
 
-  const softSkills = [
-    'Problem Solving',
-    'Team Leadership',
-    'Communication',
-    'Agile/Scrum',
-    'Project Management',
-    'Mentoring',
-    'Code Review',
-    'Technical Writing',
-  ];
+  const softSkills = useMemo(
+    () => [
+      'Problem Solving',
+      'Team Leadership',
+      'Communication',
+      'Agile/Scrum',
+      'Project Management',
+      'Mentoring',
+      'Code Review',
+      'Technical Writing',
+    ],
+    []
+  );
 
-  const gridVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
+  const gridVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.15 },
+      },
+    }),
+    []
+  );
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const itemVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 20 },
+      visible: { opacity: 1, y: 0 },
+    }),
+    []
+  );
 
   return (
     <section id="skills" className="bg-gradient-section py-20">
@@ -291,6 +307,8 @@ const Skills = () => {
       </div>
     </section>
   );
-};
+});
+
+Skills.displayName = 'Skills';
 
 export default Skills;
