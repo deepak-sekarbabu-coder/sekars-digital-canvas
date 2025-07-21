@@ -1,12 +1,8 @@
-import InteractiveSkillsOrb from '@/components/3d/InteractiveSkillsOrb';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
 import { Brain, Cloud, Code, Database, Settings } from 'lucide-react';
-import { Suspense } from 'react';
 
 const Skills = () => {
   const skillCategories = [
@@ -14,6 +10,7 @@ const Skills = () => {
       title: 'Backend Development',
       icon: Database,
       color: 'text-green-500',
+      id: 'backend',
       skills: [
         { name: 'Java', level: 85 },
         { name: 'Microservices', level: 75 },
@@ -30,6 +27,7 @@ const Skills = () => {
       title: 'Frontend Development',
       icon: Code,
       color: 'text-blue-500',
+      id: 'frontend',
       skills: [
         { name: 'React/Next.js', level: 60 },
         { name: 'TypeScript', level: 60 },
@@ -45,6 +43,7 @@ const Skills = () => {
       title: 'Database & Storage',
       icon: Database,
       color: 'text-purple-500',
+      id: 'database',
       skills: [
         { name: 'Oracle', level: 85 },
         { name: 'PostgreSQL', level: 80 },
@@ -59,6 +58,7 @@ const Skills = () => {
       title: 'Cloud & DevOps',
       icon: Cloud,
       color: 'text-orange-500',
+      id: 'devops',
       skills: [
         { name: 'Docker', level: 75 },
         { name: 'Docker Compose', level: 60 },
@@ -100,28 +100,6 @@ const Skills = () => {
     'Mentoring',
     'Code Review',
     'Technical Writing',
-  ];
-
-  const skillsFor3D = [
-    { name: 'Java', color: '#f89820' },
-    { name: 'Spring', color: '#6db33f' },
-    { name: 'Docker', color: '#0db7ed' },
-    { name: 'Kubernetes', color: '#326ce5' },
-    { name: 'Microservices', color: '#f0db4f' },
-    { name: 'REST APIs', color: '#ff6c37' },
-    { name: 'GraphQL', color: '#e10098' },
-    { name: 'React/Next.js', color: '#61dafb' },
-    { name: 'JavaScript', color: '#f7df1e' },
-    { name: 'HTML5', color: '#e34c26' },
-    { name: 'CSS3', color: '#1572b6' },
-    { name: 'Tailwind CSS', color: '#38bdf8' },
-    { name: 'Oracle', color: '#f80000' },
-    { name: 'MySQL', color: '#4479a1' },
-    { name: 'PostgreSQL', color: '#336791' },
-    { name: 'React', color: '#61dafb' },
-    { name: 'AWS', color: '#ff9900' },
-    { name: 'TypeScript', color: '#3178c6' },
-    { name: 'GraphQL', color: '#e10098' },
   ];
 
   const gridVariants = {
@@ -213,43 +191,6 @@ const Skills = () => {
                 </Card>
               </motion.div>
             ))}
-          </motion.div>
-
-          {/* 3D Skills Visualization - Interactive */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <Card className="overflow-hidden">
-              <CardHeader>
-                <CardTitle className="text-center">
-                  <span className="text-gradient">Interactive Skills</span>
-                </CardTitle>
-                <p className="text-center text-sm text-muted-foreground">
-                  Explore my core skills in 3D! (Drag to rotate)
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="flex h-96 w-full items-center justify-center">
-                  <Suspense
-                    fallback={<div className="w-full text-center">Loading 3D Skills...</div>}
-                  >
-                    <Canvas
-                      camera={{ position: [0, 0, 8], fov: 50 }}
-                      style={{ width: '100%', height: '100%' }}
-                    >
-                      <ambientLight intensity={0.7} />
-                      <directionalLight position={[5, 5, 5]} intensity={0.7} />
-                      <InteractiveSkillsOrb skills={skillsFor3D} />
-                      <OrbitControls enablePan={false} />
-                    </Canvas>
-                  </Suspense>
-                </div>
-              </CardContent>
-            </Card>
           </motion.div>
 
           {/* Tools & Technologies */}
