@@ -119,6 +119,11 @@
 
   body {
     @apply bg-background font-sans text-foreground antialiased;
+    overflow-x: hidden;
+  }
+
+  html {
+    overflow-x: hidden;
   }
 
   /* Smooth scrolling */

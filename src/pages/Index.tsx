@@ -36,9 +36,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <About />
         <Experience />
