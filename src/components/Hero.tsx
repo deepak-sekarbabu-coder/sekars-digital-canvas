@@ -106,9 +106,13 @@ const Hero = () => {
               variant="outline"
               size="lg"
               className="px-8 py-6 text-lg font-semibold shadow-card hover:shadow-hover"
-              onClick={() =>
-                window.open('/resume/Deepak Sekarbabu_SolutionArchitect_Java.pdf', '_blank')
-              }
+              onClick={() => {
+                const resumePath =
+                  import.meta.env.VITE_RESUME_PATH ||
+                  '/resume/Deepak Sekarbabu_SolutionArchitect_Java.pdf';
+                const finalPath = resumePath.startsWith('/') ? `.${resumePath}` : resumePath;
+                window.open(finalPath, '_blank');
+              }}
             >
               <Download className="mr-2 h-5 w-5" />
               Download Resume

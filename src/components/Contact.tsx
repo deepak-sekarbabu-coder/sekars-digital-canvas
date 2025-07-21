@@ -105,11 +105,14 @@ const Contact = () => {
   };
 
   const downloadResume = () => {
-    window.open(
-      import.meta.env.VITE_RESUME_PATH || '/resume/Deepak Sekarbabu_SolutionArchitect_Java.pdf',
-      '_blank',
-      'noopener,noreferrer'
-    );
+    // Get the resume path from environment or use default
+    const resumePath =
+      import.meta.env.VITE_RESUME_PATH || '/resume/Deepak Sekarbabu_SolutionArchitect_Java.pdf';
+
+    // Convert absolute path to relative for GitHub Pages compatibility
+    const finalPath = resumePath.startsWith('/') ? `.${resumePath}` : resumePath;
+
+    window.open(finalPath, '_blank', 'noopener,noreferrer');
   };
 
   const contactInfo = [
