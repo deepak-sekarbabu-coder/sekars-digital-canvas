@@ -146,7 +146,23 @@ const Contact = () => {
     },
   ];
 
-  const quickLinks = [{ label: 'Schedule a Call', icon: Clock, href: '#' }];
+  const scrollToPhone = () => {
+    const phoneSection = document.getElementById('phone-section');
+    if (phoneSection) {
+      phoneSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  };
+
+  const quickLinks = [
+    {
+      label: 'Schedule a Call',
+      icon: Clock,
+      onClick: scrollToPhone,
+    },
+  ];
 
   return (
     <section id="contact" className="bg-background py-20">
@@ -283,6 +299,7 @@ const Contact = () => {
                     {contactInfo.map((item, index) => (
                       <a
                         key={index}
+                        id={item.label === 'Phone' ? 'phone-section' : undefined}
                         href={item.href}
                         className="group flex items-start gap-4 rounded-lg p-3 transition-colors hover:bg-muted/50"
                         target={item.href.startsWith('http') ? '_blank' : undefined}
@@ -315,17 +332,11 @@ const Contact = () => {
                         key={index}
                         variant="outline"
                         className="w-full justify-start"
-                        asChild
+                        onClick={link.onClick}
+                        aria-label={`Quick action: ${link.label}`}
                       >
-                        <a
-                          href={link.href}
-                          aria-label={`Quick action: ${link.label} (opens in new tab)`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <link.icon className="mr-2 h-4 w-4" aria-hidden="true" />
-                          {link.label}
-                        </a>
+                        <link.icon className="mr-2 h-4 w-4" aria-hidden="true" />
+                        {link.label}
                       </Button>
                     ))}
                   </CardContent>

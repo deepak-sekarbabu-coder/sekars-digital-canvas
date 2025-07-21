@@ -38,15 +38,6 @@ const Footer = () => {
                   Contact
                 </a>
               </li>
-              <li>
-                <a
-                  href="#privacy"
-                  className="transition-colors hover:text-primary"
-                  aria-label="View Privacy Policy"
-                >
-                  Privacy
-                </a>
-              </li>
             </ul>
           </nav>
         </div>
