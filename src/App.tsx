@@ -31,7 +31,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter
-          basename={import.meta.env.PROD ? '/sekars-digital-canvas' : '/'}
+          basename={import.meta.env.VITE_GITHUB_PAGES === 'true' ? '/sekars-digital-canvas' : '/'}
           future={{
             // Enable the v7_* features
             v7_startTransition: true,
