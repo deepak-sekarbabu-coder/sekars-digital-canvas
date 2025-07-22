@@ -17,7 +17,9 @@
     "optimize-images": "node scripts/optimize-images.js generate",
     "optimize-images:validate": "node scripts/optimize-images.js validate",
     "optimize-images:recommendations": "node scripts/optimize-images.js recommendations",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b gh-pages"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [

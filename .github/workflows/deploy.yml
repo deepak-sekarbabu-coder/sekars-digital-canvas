@@ -6,9 +6,15 @@ on:
   pull_request:
     branches: [main]
 
+# Prevent multiple deployments from running simultaneously for the same branch
+concurrency:
+  group: 'pages-deploy-${{ github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10  # Set a timeout to prevent hanging
 
     permissions:
       contents: read
@@ -36,6 +42,7 @@ jobs:
         run: npm run lint
 
       - name: Build
+        working-directory: ./
         run: npm run build
         env:
           NODE_ENV: production
@@ -63,3 +70,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify deployment
+        if: success()
+        run: |
+          echo "Successfully deployed to ${{ steps.deployment.outputs.page_url }}"
