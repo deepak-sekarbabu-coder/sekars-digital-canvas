@@ -71,31 +71,33 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="scroll-offset bg-gradient-section py-20"
+      className="scroll-offset section-padding bg-gradient-section"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.1 }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
-          <div className="mb-16 text-center">
-            <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
+          <div className="mb-12 text-center sm:mb-16">
+            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
               <span className="text-gradient">About Me</span>
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
+            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
               I'm a dedicated software developer with a passion for creating meaningful technology
               solutions. My journey in software development has been driven by curiosity,
               creativity, and a commitment to excellence.
             </p>
           </div>
 
-          <div className="mb-16 grid items-center gap-12 lg:grid-cols-2">
+          <div className="mb-12 grid items-center gap-8 sm:mb-16 lg:grid-cols-2 lg:gap-12">
             {/* Bio Content */}
             <div>
-              <h3 className="mb-6 text-2xl font-bold">My Journey</h3>
-              <div className="space-y-4 text-foreground/80">
+              <h3 className="mb-4 text-subheading-mobile font-bold sm:mb-6 sm:text-xl lg:text-2xl">
+                My Journey
+              </h3>
+              <div className="space-y-3 text-body-mobile text-foreground/80 sm:space-y-4 sm:text-base">
                 <p>
                   With more than 12 years of experience in software development, I've had the
                   opportunity to work on diverse projects ranging from web applications to complex
@@ -116,12 +118,12 @@ const About = () => {
               </div>
 
               {/* Core Values */}
-              <div className="mt-8">
-                <h4 className="mb-4 text-lg font-semibold">Core Values</h4>
+              <div className="mt-6 sm:mt-8">
+                <h4 className="mb-3 text-base font-semibold sm:mb-4 sm:text-lg">Core Values</h4>
                 <div className="flex flex-wrap gap-2">
                   {values.map((value) => (
                     <motion.div key={value} whileHover={{ scale: 1.1 }}>
-                      <Badge variant="secondary" className="px-3 py-1">
+                      <Badge variant="secondary" className="px-2 py-1 text-xs sm:px-3 sm:text-sm">
                         {value}
                       </Badge>
                     </motion.div>
@@ -158,9 +160,11 @@ const About = () => {
 
           {/* What I Bring */}
           <div>
-            <h3 className="mb-12 text-center text-2xl font-bold">What I Bring to the Table</h3>
+            <h3 className="mb-8 text-center text-subheading-mobile font-bold sm:mb-12 sm:text-xl lg:text-2xl">
+              What I Bring to the Table
+            </h3>
             <motion.div
-              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+              className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
               variants={cardGridVariants}
               initial="hidden"
               whileInView="visible"
@@ -174,12 +178,16 @@ const About = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <Card className="h-full text-center">
-                    <CardContent className="p-6">
-                      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                        <item.icon className="h-6 w-6 text-primary" />
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 sm:mb-4 sm:h-12 sm:w-12">
+                        <item.icon className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
                       </div>
-                      <h4 className="mb-3 text-lg font-semibold">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                      <h4 className="mb-2 text-base font-semibold sm:mb-3 sm:text-lg">
+                        {item.title}
+                      </h4>
+                      <p className="text-small-mobile text-muted-foreground sm:text-sm">
+                        {item.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </motion.div>

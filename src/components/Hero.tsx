@@ -49,17 +49,17 @@ const Hero = () => {
           animate="visible"
         >
           {/* Profile Image */}
-          <motion.div variants={itemVariants} className="mb-8 pt-8 sm:pt-0">
-            <div className="mx-auto h-32 w-32 sm:h-40 sm:w-40 lg:h-48 lg:w-48">
+          <motion.div variants={itemVariants} className="mb-6 pt-6 sm:mb-8 sm:pt-8 lg:pt-0">
+            <div className="mx-auto h-28 w-28 sm:h-32 sm:w-32 md:h-40 md:w-40 lg:h-48 lg:w-48">
               <Image
                 src="./pics/Deepak1.webp"
                 alt="Deepak Sekarbabu - Professional Profile Photo"
                 width={192}
                 height={192}
                 priority={true}
-                className="rounded-full border-4 border-white shadow-section"
+                className="rounded-full border-2 border-white shadow-section sm:border-4"
                 objectFit="cover"
-                sizes="(max-width: 640px) 128px, (max-width: 1024px) 160px, 192px"
+                sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
                 placeholder="blur"
                 preload={true}
               />
@@ -69,7 +69,7 @@ const Hero = () => {
           {/* Main Title */}
           <motion.h1
             variants={itemVariants}
-            className="mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl xl:text-hero"
+            className="mb-4 text-hero-mobile font-bold leading-tight sm:mb-6 sm:text-4xl lg:text-5xl xl:text-hero"
           >
             Hi, I'm <span className="text-gradient">Deepak Sekarbabu</span>
           </motion.h1>
@@ -77,7 +77,7 @@ const Hero = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="mb-8 text-xl font-extrabold text-foreground/80 dark:text-muted-foreground sm:text-2xl lg:text-3xl"
+            className="mb-6 text-lg font-extrabold text-foreground/80 dark:text-muted-foreground sm:mb-8 sm:text-xl lg:text-2xl xl:text-3xl"
           >
             Professional Full Stack Developer & Technology Enthusiast
           </motion.p>
@@ -85,7 +85,7 @@ const Hero = () => {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mx-auto mb-12 max-w-3xl text-base leading-relaxed text-foreground/80 sm:text-lg lg:text-xl"
+            className="mx-auto mb-8 max-w-3xl text-body-mobile leading-relaxed text-foreground/80 sm:mb-12 sm:text-base lg:text-lg xl:text-xl"
           >
             Passionate about creating innovative software solutions and building exceptional user
             experiences. With expertise in modern technologies and a commitment to continuous
@@ -96,20 +96,20 @@ const Hero = () => {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="mb-10 flex flex-col items-center justify-center gap-3 sm:mb-16 sm:flex-row sm:gap-4"
           >
             <Button
               size="lg"
-              className="bg-primary px-8 py-6 text-lg font-semibold text-primary-foreground shadow-hover hover:bg-primary-hover"
+              className="w-full bg-primary px-6 py-5 text-base font-semibold text-primary-foreground shadow-hover hover:bg-primary-hover sm:w-auto sm:px-8 sm:py-6 sm:text-lg"
               onClick={() => scrollToSection('contact')}
             >
-              <Mail className="mr-2 h-5 w-5" />
+              <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Get In Touch
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="px-8 py-6 text-lg font-semibold shadow-card hover:shadow-hover"
+              className="w-full px-6 py-5 text-base font-semibold shadow-card hover:shadow-hover sm:w-auto sm:px-8 sm:py-6 sm:text-lg"
               onClick={() => {
                 const resumePath =
                   import.meta.env.VITE_RESUME_PATH ||
@@ -118,7 +118,7 @@ const Hero = () => {
                 window.open(finalPath, '_blank');
               }}
             >
-              <Download className="mr-2 h-5 w-5" />
+              <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Download Resume
             </Button>
           </motion.div>
@@ -126,7 +126,7 @@ const Hero = () => {
           {/* Social CTA */}
           <motion.p
             variants={itemVariants}
-            className="mb-4 text-base font-medium text-muted-foreground sm:text-lg"
+            className="mb-3 text-small-mobile font-medium text-muted-foreground sm:mb-4 sm:text-base lg:text-lg"
           >
             Follow me on social media for updates and tech insights
           </motion.p>
@@ -134,7 +134,7 @@ const Hero = () => {
           {/* Social Links */}
           <motion.div
             variants={itemVariants}
-            className="mb-12 flex items-center justify-center gap-6"
+            className="mb-8 flex items-center justify-center gap-4 sm:mb-12 sm:gap-6"
           >
             <motion.a
               href="https://www.linkedin.com/in/deepak-sekarbabu-85b67628/"

@@ -68,9 +68,9 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
       }`}
     >
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between gap-4 pr-4 sm:pr-0">
+        <div className="flex h-14 items-center justify-between gap-2 sm:h-16 sm:gap-4">
           <div
-            className="text-gradient min-w-0 flex-shrink cursor-pointer truncate text-lg font-bold sm:text-xl"
+            className="text-gradient min-w-0 flex-shrink cursor-pointer truncate text-base font-bold sm:text-lg lg:text-xl"
             onClick={() => scrollToSection('hero')}
           >
             Deepak Sekarbabu
@@ -119,15 +119,19 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="mr-4 flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-1 sm:gap-2 md:hidden">
             <Button
               variant="outline"
               size="icon"
               onClick={toggleDarkMode}
-              className="h-9 w-9 shrink-0"
+              className="h-8 w-8 shrink-0 sm:h-9 sm:w-9"
               aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
-              {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {isDarkMode ? (
+                <Sun className="h-3 w-3 sm:h-4 sm:w-4" />
+              ) : (
+                <Moon className="h-3 w-3 sm:h-4 sm:w-4" />
+              )}
               <span className="sr-only">
                 {isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               </span>
@@ -136,10 +140,14 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
               variant="outline"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="h-9 w-9 shrink-0"
+              className="h-8 w-8 shrink-0 sm:h-9 sm:w-9"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
-              {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              {isMenuOpen ? (
+                <X className="h-3 w-3 sm:h-4 sm:w-4" />
+              ) : (
+                <Menu className="h-3 w-3 sm:h-4 sm:w-4" />
+              )}
               <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
             </Button>
           </div>
@@ -152,14 +160,14 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 right-0 top-full space-y-1 border-b border-border bg-background/95 py-4 shadow-card backdrop-blur-md md:hidden"
+            className="absolute left-0 right-0 top-full space-y-1 border-b border-border bg-background/95 py-3 shadow-card backdrop-blur-md md:hidden"
           >
             <div className="container mx-auto px-3 sm:px-6 lg:px-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative block w-full rounded-md px-4 py-3 text-left transition-all duration-200 ${
+                  className={`relative block w-full rounded-md px-3 py-2.5 text-left text-sm transition-all duration-200 sm:px-4 sm:py-3 sm:text-base ${
                     isNavItemActive(item.id)
                       ? 'border-l-2 border-primary bg-primary/10 font-semibold text-primary'
                       : 'text-foreground hover:bg-muted hover:text-primary'
@@ -172,7 +180,7 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="h-2 w-2 rounded-full bg-primary"
+                        className="h-1.5 w-1.5 rounded-full bg-primary sm:h-2 sm:w-2"
                       />
                     )}
                   </div>

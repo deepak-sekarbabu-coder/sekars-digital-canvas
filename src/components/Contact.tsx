@@ -172,8 +172,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="scroll-offset bg-background py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="scroll-offset section-padding bg-background">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
           <motion.div
@@ -181,18 +181,18 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
-            className="mb-16 text-center"
+            className="mb-12 text-center sm:mb-16"
           >
-            <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
+            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
               Let's <span className="text-gradient">Connect</span>
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
+            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
               I'm always interested in new opportunities, collaborations and interesting projects.
               Let's discuss how we can work together to bring your ideas to life.
             </p>
           </motion.div>
 
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -203,16 +203,16 @@ const Contact = () => {
               className="lg:col-span-2"
             >
               <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <div className="rounded-full bg-primary/10 p-2">
-                      <Send className="h-5 w-5 text-primary" />
+                <CardHeader className="px-4 py-4 sm:px-6 sm:py-6">
+                  <CardTitle className="flex items-center gap-2 text-base sm:gap-3 sm:text-lg">
+                    <div className="rounded-full bg-primary/10 p-1.5 sm:p-2">
+                      <Send className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
                     </div>
                     Send me a message
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                <CardContent className="px-4 pb-4 sm:px-6 sm:pb-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="name">Name *</Label>
@@ -268,9 +268,9 @@ const Contact = () => {
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full sm:w-auto"
+                      className="h-10 w-full text-sm sm:h-11 sm:w-auto sm:text-base"
                     >
-                      <Send className="mr-2 h-4 w-4" />
+                      <Send className="mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </form>
@@ -299,10 +299,10 @@ const Contact = () => {
               {/* Contact Details */}
               <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
                 <Card>
-                  <CardHeader>
-                    <CardTitle>Get in Touch</CardTitle>
+                  <CardHeader className="px-4 py-4 sm:px-6 sm:py-6">
+                    <CardTitle className="text-base sm:text-lg">Get in Touch</CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-3 px-4 pb-4 sm:space-y-4 sm:px-6 sm:pb-6">
                     {contactInfo.map((item, index) => (
                       <a
                         key={index}
@@ -313,13 +313,19 @@ const Contact = () => {
                         rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         aria-label={`Contact via ${item.label}${item.value ? `: ${item.value}` : ''}${item.href.startsWith('http') ? ' (opens in a new tab)' : ''}`}
                       >
-                        <div className="rounded-full bg-primary/10 p-2 transition-colors group-hover:bg-primary/20">
-                          <item.icon className="h-4 w-4 text-primary" />
+                        <div className="rounded-full bg-primary/10 p-1.5 transition-colors group-hover:bg-primary/20 sm:p-2">
+                          <item.icon className="h-3.5 w-3.5 text-primary sm:h-4 sm:w-4" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h4 className="text-sm font-semibold">{item.label}</h4>
-                          <p className="break-all text-sm text-foreground/80">{item.value}</p>
-                          <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
+                          <h4 className="text-small-mobile font-semibold sm:text-sm">
+                            {item.label}
+                          </h4>
+                          <p className="break-all text-small-mobile text-foreground/80 sm:text-sm">
+                            {item.value}
+                          </p>
+                          <p className="mt-0.5 text-xs text-muted-foreground sm:mt-1">
+                            {item.description}
+                          </p>
                         </div>
                       </a>
                     ))}
@@ -330,10 +336,10 @@ const Contact = () => {
               {/* Quick Actions */}
               <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
                 <Card>
-                  <CardHeader>
-                    <CardTitle>Quick Actions</CardTitle>
+                  <CardHeader className="px-4 py-4 sm:px-6 sm:py-6">
+                    <CardTitle className="text-base sm:text-lg">Quick Actions</CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3">
+                  <CardContent className="space-y-2 px-4 pb-4 sm:space-y-3 sm:px-6 sm:pb-6">
                     {quickLinks.map((link, index) => (
                       <Button
                         key={index}

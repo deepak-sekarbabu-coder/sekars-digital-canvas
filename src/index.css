@@ -61,12 +61,35 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.15s ease-out;
 
-    /* Typography Hierarchy */
+    /* Typography Hierarchy - Desktop */
     --text-hero: 3.5rem;
     --text-heading: 2.25rem;
     --text-subheading: 1.5rem;
     --text-body: 1rem;
     --text-small: 0.875rem;
+
+    /* Mobile Typography - Optimized for readability */
+    --text-hero-mobile: 2.25rem;
+    --text-heading-mobile: 1.75rem;
+    --text-subheading-mobile: 1.25rem;
+    --text-body-mobile: 0.9rem;
+    --text-small-mobile: 0.8rem;
+
+    /* Spacing System */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Mobile Spacing - Reduced for better mobile UX */
+    --spacing-xs-mobile: 0.375rem;
+    --spacing-sm-mobile: 0.75rem;
+    --spacing-md-mobile: 1rem;
+    --spacing-lg-mobile: 1.25rem;
+    --spacing-xl-mobile: 2rem;
+    --spacing-2xl-mobile: 2.5rem;
   }
 
   .dark {
@@ -149,11 +172,53 @@
     @apply bg-accent;
   }
 
-  /* Mobile header improvements */
-  @media (max-width: 480px) {
+  /* Mobile Typography Optimizations */
+  @media (max-width: 640px) {
+    /* Hero section mobile optimizations */
+    .text-hero-mobile {
+      font-size: var(--text-hero-mobile);
+      line-height: 1.2;
+    }
+
+    .text-heading-mobile {
+      font-size: var(--text-heading-mobile);
+      line-height: 1.3;
+    }
+
+    .text-subheading-mobile {
+      font-size: var(--text-subheading-mobile);
+      line-height: 1.4;
+    }
+
+    .text-body-mobile {
+      font-size: var(--text-body-mobile);
+      line-height: 1.6;
+    }
+
+    .text-small-mobile {
+      font-size: var(--text-small-mobile);
+      line-height: 1.5;
+    }
+
+    /* Header text gradient mobile fix */
     .text-gradient {
       font-size: 1rem;
       line-height: 1.25rem;
+    }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .text-hero-mobile {
+      font-size: 2rem;
+    }
+
+    .text-heading-mobile {
+      font-size: 1.5rem;
+    }
+
+    .text-subheading-mobile {
+      font-size: 1.125rem;
     }
   }
 }
@@ -183,5 +248,51 @@
 
   .scroll-offset-sm {
     scroll-margin-top: 4rem; /* 64px - for sections that need less space */
+  }
+
+  /* Responsive spacing utilities */
+  .section-padding {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+  }
+
+  .section-padding-sm {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .content-spacing {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .content-spacing-sm {
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Mobile spacing adjustments */
+  @media (max-width: 640px) {
+    .section-padding {
+      padding-top: var(--spacing-2xl-mobile);
+      padding-bottom: var(--spacing-2xl-mobile);
+    }
+
+    .section-padding-sm {
+      padding-top: var(--spacing-xl-mobile);
+      padding-bottom: var(--spacing-xl-mobile);
+    }
+
+    .content-spacing {
+      margin-bottom: var(--spacing-lg-mobile);
+    }
+
+    .content-spacing-sm {
+      margin-bottom: var(--spacing-md-mobile);
+    }
+
+    /* Reduce container padding on mobile */
+    .container {
+      padding-left: var(--spacing-sm-mobile);
+      padding-right: var(--spacing-sm-mobile);
+    }
   }
 }

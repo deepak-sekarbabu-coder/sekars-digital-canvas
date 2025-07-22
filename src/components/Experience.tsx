@@ -160,8 +160,8 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="scroll-offset bg-background py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="scroll-offset section-padding bg-background">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
           <motion.div
@@ -169,19 +169,19 @@ const Experience = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
-            className="mb-16 text-center"
+            className="mb-12 text-center sm:mb-16"
           >
-            <h2 className="mb-6 text-3xl font-bold sm:text-4xl lg:text-heading">
+            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
               <span className="text-gradient">Professional Experience</span>
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
+            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
               A journey through my professional career, highlighting key roles, responsibilities and
               achievements in software development.
             </p>
           </motion.div>
 
           {/* Experience Timeline */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
@@ -192,45 +192,52 @@ const Experience = () => {
                 whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}
               >
                 <Card className="h-full">
-                  <CardContent className="p-8">
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                  <CardContent className="p-4 sm:p-6 lg:p-8">
+                    <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:items-start lg:justify-between">
                       {/* Left Column - Main Info */}
                       <div className="flex-1">
-                        <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center">
+                        <div className="mb-3 flex flex-col gap-2 sm:mb-4 sm:flex-row sm:items-center sm:gap-4">
                           <div>
-                            <h3 className="text-xl font-bold text-foreground">{exp.title}</h3>
-                            <div className="mt-1 flex items-center gap-2 text-muted-foreground">
-                              <Building className="h-4 w-4" />
+                            <h3 className="text-lg font-bold text-foreground sm:text-xl">
+                              {exp.title}
+                            </h3>
+                            <div className="mt-1 flex items-center gap-2 text-small-mobile text-muted-foreground sm:text-sm">
+                              <Building className="h-3 w-3 sm:h-4 sm:w-4" />
                               <span className="font-medium">{exp.company}</span>
                             </div>
                           </div>
-                          <Badge variant="secondary" className="self-start sm:self-center">
+                          <Badge
+                            variant="secondary"
+                            className="self-start text-xs sm:self-center sm:text-sm"
+                          >
                             {exp.type}
                           </Badge>
                         </div>
 
-                        <div className="mb-6 flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row">
+                        <div className="mb-4 flex flex-col gap-2 text-small-mobile text-muted-foreground sm:mb-6 sm:flex-row sm:gap-4 sm:text-sm">
                           <div className="flex items-center gap-2">
-                            <Calendar className="h-4 w-4" />
+                            <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                             <span>{exp.period}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <MapPin className="h-4 w-4" />
+                            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
                             <span>{exp.location}</span>
                           </div>
                           {exp.client && (
                             <div className="flex items-center gap-2">
-                              <Users className="h-4 w-4" />
+                              <Users className="h-3 w-3 sm:h-4 sm:w-4" />
                               <span>Clients: {exp.client.join(', ')}</span>
                             </div>
                           )}
                         </div>
 
                         {/* Responsibilities */}
-                        <div className="mb-6">
-                          <h4 className="mb-3 font-semibold">Key Responsibilities:</h4>
+                        <div className="mb-4 sm:mb-6">
+                          <h4 className="mb-2 text-base font-semibold sm:mb-3 sm:text-lg">
+                            Key Responsibilities:
+                          </h4>
                           <motion.ul
-                            className="space-y-2"
+                            className="space-y-1.5 sm:space-y-2"
                             variants={listVariants}
                             initial="hidden"
                             whileInView="visible"
@@ -239,10 +246,10 @@ const Experience = () => {
                             {exp.responsibilities.map((responsibility, idx) => (
                               <motion.li
                                 key={idx}
-                                className="flex items-start gap-3 text-foreground/80"
+                                className="flex items-start gap-2 text-small-mobile text-foreground/80 sm:gap-3 sm:text-sm"
                                 variants={listItemVariants}
                               >
-                                <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                                <div className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-primary sm:mt-2 sm:h-1.5 sm:w-1.5" />
                                 <span>{responsibility}</span>
                               </motion.li>
                             ))}
@@ -252,8 +259,10 @@ const Experience = () => {
 
                       {/* Right Column - Technologies */}
                       <div className="lg:w-64 lg:flex-shrink-0">
-                        <h4 className="mb-3 font-semibold">Technologies Used:</h4>
-                        <div className="flex flex-wrap gap-2">
+                        <h4 className="mb-2 text-base font-semibold sm:mb-3 sm:text-lg">
+                          Technologies Used:
+                        </h4>
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
                           {exp.technologies.map((tech) => (
                             <Badge key={tech} variant="outline" className="text-xs">
                               {tech}

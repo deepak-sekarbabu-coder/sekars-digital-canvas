@@ -71,8 +71,13 @@ export default {
       },
       fontSize: {
         hero: 'var(--text-hero)',
+        'hero-mobile': 'var(--text-hero-mobile)',
         heading: 'var(--text-heading)',
+        'heading-mobile': 'var(--text-heading-mobile)',
         subheading: 'var(--text-subheading)',
+        'subheading-mobile': 'var(--text-subheading-mobile)',
+        'body-mobile': 'var(--text-body-mobile)',
+        'small-mobile': 'var(--text-small-mobile)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
