@@ -14,7 +14,7 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10  # Set a timeout to prevent hanging
+    timeout-minutes: 10 # Set a timeout to prevent hanging
 
     permissions:
       contents: read

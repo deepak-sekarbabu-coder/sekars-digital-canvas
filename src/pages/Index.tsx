@@ -5,6 +5,7 @@ import About from '@/components/About';
 import Experience from '@/components/Experience';
 import Skills from '@/components/Skills';
 import Education from '@/components/Education';
+import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { useSEO } from '@/hooks/useSEO';
@@ -55,6 +56,7 @@ const Index = () => {
         <Experience />
         <Skills />
         <Education />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />

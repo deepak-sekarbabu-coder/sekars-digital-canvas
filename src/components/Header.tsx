@@ -19,6 +19,7 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
     { label: 'Experience', id: 'experience' },
     { label: 'Skills', id: 'skills' },
     { label: 'Education', id: 'education' },
+    { label: 'Testimonials', id: 'testimonials' },
     { label: 'Contact', id: 'contact' },
   ];
 
