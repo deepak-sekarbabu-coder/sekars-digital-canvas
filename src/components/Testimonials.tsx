@@ -36,7 +36,6 @@ const Testimonials = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: 'easeOut',
       },
     },
   };
@@ -49,7 +48,7 @@ const Testimonials = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className="mb-12 text-center sm:mb-16"
           >
@@ -67,7 +66,7 @@ const Testimonials = () => {
             variants={listVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             className="grid gap-8 md:grid-cols-2"
           >
             {testimonials.map((testimonial) => (
