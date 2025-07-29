@@ -71,8 +71,13 @@ const Testimonials = () => {
             className="grid gap-8 md:grid-cols-2"
           >
             {testimonials.map((testimonial) => (
-              <motion.div key={testimonial.id} variants={itemVariants} className="h-full">
-                <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
+              <motion.div
+                key={testimonial.id}
+                variants={itemVariants}
+                className="h-full"
+                whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}
+              >
+                <Card className="h-full overflow-hidden">
                   <CardContent className="p-0">
                     <div className="relative flex aspect-[3/2] w-full items-center justify-center bg-white">
                       <img
