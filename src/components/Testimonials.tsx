@@ -36,7 +36,6 @@ const Testimonials = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: 'easeOut',
       },
     },
   };
@@ -49,7 +48,7 @@ const Testimonials = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className="mb-12 text-center sm:mb-16"
           >
@@ -67,12 +66,17 @@ const Testimonials = () => {
             variants={listVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             className="grid gap-8 md:grid-cols-2"
           >
             {testimonials.map((testimonial) => (
-              <motion.div key={testimonial.id} variants={itemVariants} className="h-full">
-                <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
+              <motion.div
+                key={testimonial.id}
+                variants={itemVariants}
+                className="h-full"
+                whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}
+              >
+                <Card className="h-full overflow-hidden">
                   <CardContent className="p-0">
                     <div className="relative flex aspect-[3/2] w-full items-center justify-center bg-white">
                       <img
