@@ -78,8 +78,8 @@ function validateImageSetup() {
   const checks = [
     {
       name: 'Profile image exists',
-      check: () => fs.existsSync('public/pics/Deepak1.webp'),
-      fix: 'Add your profile image to public/pics/Deepak1.webp',
+      check: () => fs.existsSync('public/pics/Deepak2.jpeg'),
+      fix: 'Add your profile image to public/pics/Deepak2.jpeg',
     },
     {
       name: 'Responsive images directory exists',
@@ -92,7 +92,7 @@ function validateImageSetup() {
         const responsiveDir = 'public/pics/responsive';
         if (!fs.existsSync(responsiveDir)) return false;
         const files = fs.readdirSync(responsiveDir);
-        return files.some((file) => file.includes('deepak1-') && file.endsWith('.webp'));
+        return files.some((file) => file.includes('deepak2-') && file.endsWith('.webp'));
       },
       fix: 'Generate responsive images using: npm run optimize-images',
     },
@@ -183,7 +183,7 @@ switch (command) {
     break;
 
   case 'generate':
-    const inputPath = process.argv[3] || 'public/pics/Deepak1.webp';
+    const inputPath = process.argv[3] || 'public/pics/Deepak2.jpeg';
     const outputDir = process.argv[4] || 'public/pics/responsive';
     generateResponsiveImages(inputPath, outputDir);
     break;

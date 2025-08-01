@@ -142,7 +142,7 @@ const About = () => {
                 <CardContent className="p-0">
                   <div className="h-50 w-full overflow-hidden rounded-lg">
                     <Image
-                      src="./pics/Deepak1.webp"
+                      src="./pics/Deepak2.jpeg"
                       alt="Deepak Sekarbabu"
                       width={800}
                       height={600}
