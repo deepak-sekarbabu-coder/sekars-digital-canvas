@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { scrollToElement, scrollToTop } from '@/utils/smoothScroll';
 
@@ -10,52 +10,60 @@ interface HeaderProps {
   isDarkMode: boolean;
 }
 
+const NAV_ITEMS = [
+  { label: 'About', id: 'about' },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Education', id: 'education' },
+  { label: 'Testimonials', id: 'testimonials' },
+  { label: 'Contact', id: 'contact' },
+] as const;
+
 const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = [
-    { label: 'About', id: 'about' },
-    { label: 'Experience', id: 'experience' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Education', id: 'education' },
-    { label: 'Testimonials', id: 'testimonials' },
-    { label: 'Contact', id: 'contact' },
-  ];
-
   // Track active section
   const activeSection = useActiveSection({
-    sectionIds: ['hero', ...navItems.map((item) => item.id)],
+    sectionIds: ['hero', ...NAV_ITEMS.map((item) => item.id)],
   });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
 
     // Use passive listener for better performance and bfcache compatibility
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    if (id === 'hero') {
-      scrollToTop();
-    } else {
-      scrollToElement(id);
-    }
-    setIsMenuOpen(false);
-  };
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+
+  const scrollToSection = useCallback(
+    (id: string) => {
+      if (id === 'hero') {
+        scrollToTop();
+      } else {
+        scrollToElement(id);
+      }
+      closeMenu();
+    },
+    [closeMenu]
+  );
 
   // Check if a navigation item is active
-  const isNavItemActive = (itemId: string) => {
-    // Special case: when on hero section, highlight "About" as it's the first nav item
-    if (activeSection === 'hero' && itemId === 'about') {
-      return true;
-    }
-    return activeSection === itemId;
-  };
+  const isNavItemActive = useCallback(
+    (itemId: string) => {
+      // Special case: when on hero section, highlight "About" as it's the first nav item
+      if (activeSection === 'hero' && itemId === 'about') {
+        return true;
+      }
+      return activeSection === itemId;
+    },
+    [activeSection]
+  );
+
+  const navItems = useMemo(() => NAV_ITEMS, []);
 
   return (
     <motion.header

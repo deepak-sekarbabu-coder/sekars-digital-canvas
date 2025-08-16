@@ -44,7 +44,7 @@ const Image = forwardRef<HTMLDivElement, ImageProps>(
     ref
   ) => {
     // Optimize image with responsive sizes and blur placeholder
-    const optimizedImage = useImageOptimization({
+    const optimized = useImageOptimization({
       src,
       width,
       height,
@@ -60,20 +60,20 @@ const Image = forwardRef<HTMLDivElement, ImageProps>(
     return (
       <div ref={ref} className="relative">
         <ResponsiveImage
-          src={optimizedImage.src}
+          src={optimized.src}
           alt={alt}
           width={width}
           height={height}
           priority={priority}
           quality={quality}
-          sizes={sizes || optimizedImage.sizes}
-          srcSet={optimizedImage.srcSet}
+          sizes={sizes || optimized.sizes}
+          srcSet={optimized.srcSet}
           className={className}
           fill={fill}
           objectFit={objectFit}
           objectPosition={objectPosition}
           placeholder={placeholder}
-          blurDataURL={optimizedImage.placeholder}
+          blurDataURL={optimized.placeholder}
           onLoad={onLoad}
           onError={onError}
           loading={priority ? 'eager' : 'lazy'}
