@@ -70,7 +70,7 @@ const StructuredData = ({ type = 'person' }: StructuredDataProps) => {
             name: 'Anna University',
           },
         ],
-        email: import.meta.env.VITE_CONTACT_EMAIL || 'deepak.sekarbabu@tcs.com',
+        email: import.meta.env.VITE_CONTACT_EMAIL || 'deepakinmail@gmail.com',
         telephone: import.meta.env.VITE_PHONE_NUMBER,
         address: {
           '@type': 'PostalAddress',

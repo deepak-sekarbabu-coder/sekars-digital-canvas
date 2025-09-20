@@ -173,12 +173,12 @@ const Hero = () => {
               <BookOpen className="h-5 w-5 text-primary" />
             </motion.a>
             <motion.a
-              href="mailto:deepak.sekarbabu@tcs.com"
+              href="mailto:deepakinmail@gmail.com"
               className="rounded-full bg-card p-3 shadow-card"
               whileHover={{ scale: 1.15, y: -2, boxShadow: 'var(--shadow-hover)' }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 300 }}
-              aria-label="Send email to deepak.sekarbabu@tcs.com"
+              aria-label="Send email to deepakinmail@gmail.com"
             >
               <Mail className="h-6 w-6 text-primary" />
             </motion.a>

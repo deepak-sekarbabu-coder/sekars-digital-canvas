@@ -135,14 +135,14 @@ const Contact = () => {
       label: 'WhatsApp',
       value: import.meta.env.VITE_WHATSAPP_NUMBER || '',
       href: `tel:${import.meta.env.VITE_WHATSAPP_NUMBER || ''}`,
-      description: 'Available Mon-Fri, 9AM-6PM CEST',
+      description: 'Available anytime via WhatsApp',
     },
     {
       icon: MapPin,
       label: 'Location',
       value: import.meta.env.VITE_LOCATION || 'Your Location',
       href: '#',
-      description: 'Open to opportunities in UK',
+      description: 'Open to opportunities in Chennai, India or Remote',
     },
     {
       icon: Linkedin,
@@ -363,11 +363,11 @@ const Contact = () => {
                     <div className="mb-2 inline-flex items-center gap-2 text-green-600 dark:text-green-400">
                       <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
                       <span className="text-sm font-medium">
-                        Available for new projects from Dec 2025
+                        Currently Servicing Notice Period in Stockholm, Sweden
                       </span>
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      Currently looking for opportunities in UK
+                      Ready to start from 15 December 2024 onwards
                     </p>
                   </CardContent>
                 </Card>
