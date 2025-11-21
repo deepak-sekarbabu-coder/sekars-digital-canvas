@@ -49,7 +49,7 @@ const Hero = () => {
           animate="visible"
         >
           {/* Profile Image */}
-          <motion.div variants={itemVariants} className="mb-6 pt-6 sm:mb-8 sm:pt-8 lg:pt-0">
+          <motion.div variants={itemVariants} className="mb-6 pt-12 sm:mb-8 sm:pt-16 lg:pt-8">
             <div className="mx-auto h-28 w-28 sm:h-32 sm:w-32 md:h-40 md:w-40 lg:h-48 lg:w-48">
               <Image
                 src="./pics/Deepak1.webp"
@@ -57,7 +57,7 @@ const Hero = () => {
                 width={192}
                 height={192}
                 priority={true}
-                className="rounded-full border-2 border-white shadow-section sm:border-4"
+                className="rounded-full border-2 border-white p-2 shadow-section sm:border-4 sm:p-3"
                 objectFit="cover"
                 sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
                 placeholder="blur"

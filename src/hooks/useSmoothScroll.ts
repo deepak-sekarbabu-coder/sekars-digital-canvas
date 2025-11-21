@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { scrollToElement, scrollToTop } from '@/utils/smoothScroll';
+import { scrollToElement, scrollToTop } from '@/lib/navigation/smoothScroll';
 
 /**
  * Custom hook for smooth scrolling with header offset

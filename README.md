@@ -27,12 +27,26 @@ This project is a personal portfolio website built to highlight software develop
 
 ```
 src/
-  components/      # UI and section components (Hero, About, Projects, etc.)
-  hooks/           # Custom React hooks
-  pages/           # Page-level components (Index, NotFound)
-  lib/             # Utility functions
-  index.css        # Tailwind and custom styles
-  main.tsx         # App entry point
+  components/      # UI and section components
+    3d/           # 3D components (Three.js/R3F)
+    SEO/          # SEO-related components
+    ui/           # shadcn-ui components
+    *.tsx         # Page section components (Hero, About, etc.)
+  hooks/          # Custom React hooks
+  lib/            # Utility functions and helpers
+    seo/          # SEO utilities
+    images/       # Image optimization utilities
+    performance/  # Performance optimization utilities
+    navigation/   # Navigation and scroll utilities
+    security/     # Security utilities (CSP)
+  pages/          # Page-level components (Index, NotFound)
+  plugins/        # Vite plugins
+  App.tsx         # Main app component
+  main.tsx        # App entry point
+  index.css       # Global styles
+docs/             # Documentation
+public/           # Static assets
+scripts/          # Build and utility scripts
 .env.example      # Example environment variables
 ```
 

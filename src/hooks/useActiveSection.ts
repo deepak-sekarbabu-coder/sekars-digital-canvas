@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getActiveSection } from '@/utils/smoothScroll';
+import { getActiveSection } from '@/lib/navigation/smoothScroll';
 
 interface UseActiveSectionOptions {
   sectionIds: string[];

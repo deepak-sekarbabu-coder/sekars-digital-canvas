@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useActiveSection } from '@/hooks/useActiveSection';
-import { scrollToElement, scrollToTop } from '@/utils/smoothScroll';
+import { scrollToElement, scrollToTop } from '@/lib/navigation/smoothScroll';
 
 interface HeaderProps {
   toggleDarkMode: () => void;

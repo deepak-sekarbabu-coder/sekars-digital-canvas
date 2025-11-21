@@ -5,11 +5,11 @@ import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
-import { initializeBfcacheOptimizations } from '@/utils/bfcache';
+import { initializeBfcacheOptimizations } from '@/lib/performance/bfcache';
 import SEOHead from '@/components/SEO/SEOHead';
 import StructuredData from '@/components/SEO/StructuredData';
-import '@/utils/seo-validator'; // Auto-runs SEO validation in development
-import '@/utils/image-validation'; // Auto-runs image validation in development
+import '@/lib/seo/seo-validator'; // Auto-runs SEO validation in development
+import '@/lib/images/image-validation'; // Auto-runs image validation in development
 
 const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { generateResponsiveSrcSet } from '@/utils/responsive-images';
+import { generateResponsiveSrcSet } from '@/lib/images/responsive-images';
 
 interface ImageOptimizationOptions {
   src: string;

@@ -1,5 +1,5 @@
 import type { Plugin } from 'vite';
-import { generateCSPHeader, SECURITY_HEADERS } from '../utils/csp';
+import { generateCSPHeader, SECURITY_HEADERS } from '../lib/security/csp';
 
 /**
  * Vite plugin to add CSP and security headers during development

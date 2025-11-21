@@ -99,7 +99,7 @@ const About = () => {
               </h3>
               <div className="space-y-3 text-body-mobile text-foreground/80 sm:space-y-4 sm:text-base">
                 <p>
-                  With more than 12 years of experience in software development, I've had the
+                  With more than 13 years of experience in software development, I've had the
                   opportunity to work on diverse projects ranging from web applications to complex
                   enterprise systems. My expertise spans both frontend and backend technologies,
                   allowing me to build comprehensive solutions.
