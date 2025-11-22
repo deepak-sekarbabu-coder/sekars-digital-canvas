@@ -17,6 +17,13 @@ const Testimonials = () => {
       width: 600,
       height: 400,
     },
+    {
+      id: 3,
+      image: '/pics/testimonials/Testimonial3.png',
+      alt: 'Testimonial 3',
+      width: 600,
+      height: 400,
+    },
   ];
 
   const listVariants = {
