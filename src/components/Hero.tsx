@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowDown, BookOpen, Download, Github, Linkedin, Mail } from 'lucide-react';
-import Scene3D from '@/components/3d/Scene3D';
+
 import Image from '@/components/Image';
 
 const Hero = () => {
@@ -37,10 +37,6 @@ const Hero = () => {
       id="hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-section"
     >
-      {/* 3D Background - Temporarily Disabled */}
-      {/* <div className="absolute inset-0 z-0">
-        <Scene3D className="w-full h-full" />
-      </div> */}
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-4xl text-center"

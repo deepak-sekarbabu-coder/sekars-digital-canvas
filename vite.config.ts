@@ -23,7 +23,6 @@ export default defineConfig(({ mode }) => ({
           vendor: ['react', 'react-dom'],
           ui: ['@radix-ui/react-progress', '@radix-ui/react-slot'],
           motion: ['framer-motion'],
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
         },
       },
     },
