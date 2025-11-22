@@ -1,4 +1,3 @@
-import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
@@ -10,6 +9,7 @@ import SEOHead from '@/components/SEO/SEOHead';
 import StructuredData from '@/components/SEO/StructuredData';
 import '@/lib/seo/seo-validator'; // Auto-runs SEO validation in development
 import '@/lib/images/image-validation'; // Auto-runs image validation in development
+import LoadingSpinner from '@/components/ui/LoadingSpinner'; // Import the new LoadingSpinner
 
 const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -36,7 +36,6 @@ const App = () => {
         <ErrorBoundary>
           <SEOHead />
           <StructuredData type="person" />
-          <Toaster />
           <Sonner />
           <BrowserRouter
             basename={import.meta.env.VITE_GITHUB_PAGES === 'true' ? '/sekars-digital-canvas' : '/'}
@@ -46,11 +45,7 @@ const App = () => {
               v7_relativeSplatPath: true,
             }}
           >
-            <Suspense
-              fallback={
-                <div className="flex min-h-screen items-center justify-center">Loading...</div>
-              }
-            >
+            <Suspense fallback={<LoadingSpinner />}>
               <Routes>
                 <Route path="/" element={<Index />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

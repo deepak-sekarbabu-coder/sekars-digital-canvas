@@ -22,7 +22,12 @@
     "deploy": "gh-pages -d dist -b gh-pages"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "npm run type-check"
+    ],
+    "**/*.{json,css,scss,md}": [
       "prettier --write"
     ]
   },
@@ -33,7 +38,6 @@
     "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@tanstack/react-query": "^5.56.2",
     "class-variance-authority": "^0.7.1",
