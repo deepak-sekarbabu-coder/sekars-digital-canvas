@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Code, Zap, Users, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from '@/components/Image';
+import SectionHeading from '@/components/SectionHeading';
 
 const About = () => {
   const highlights = [
@@ -80,16 +81,12 @@ const About = () => {
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
-          <div className="mb-12 text-center sm:mb-16">
-            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
-              <span className="text-gradient">About Me</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
-              I'm a dedicated software developer with a passion for creating meaningful technology
+          <SectionHeading
+            title="About Me"
+            description="I'm a dedicated software developer with a passion for creating meaningful technology
               solutions. My journey in software development has been driven by curiosity,
-              creativity, and a commitment to excellence.
-            </p>
-          </div>
+              creativity, and a commitment to excellence."
+          />
 
           <div className="mb-12 grid items-center gap-8 sm:mb-16 lg:grid-cols-2 lg:gap-12">
             {/* Bio Content */}
@@ -160,9 +157,15 @@ const About = () => {
 
           {/* What I Bring */}
           <div>
-            <h3 className="mb-8 text-center text-subheading-mobile font-bold sm:mb-12 sm:text-xl lg:text-2xl">
+            <motion.h3
+              className="heading-underline mb-8 text-center text-subheading-mobile font-bold sm:mb-12 sm:text-xl lg:text-2xl"
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: false, amount: 0.3 }}
+            >
               What I Bring to the Table
-            </h3>
+            </motion.h3>
             <motion.div
               className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
               variants={cardGridVariants}

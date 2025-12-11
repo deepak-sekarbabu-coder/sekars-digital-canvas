@@ -4,6 +4,7 @@ import { Progress } from '@/components/ui/progress';
 import { motion } from 'framer-motion';
 import { Brain, Cloud, Code, Database, Settings } from 'lucide-react';
 import { memo, useMemo } from 'react';
+import SectionHeading from '@/components/SectionHeading';
 
 const Skills = memo(() => {
   const skillCategories = useMemo(
@@ -136,21 +137,11 @@ const Skills = memo(() => {
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center sm:mb-16"
-          >
-            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
-              <span className="text-gradient">Skills & Expertise</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
-              A comprehensive overview of my technical skills, tools and technologies I use to build
-              exceptional software solutions.
-            </p>
-          </motion.div>
+          <SectionHeading
+            title="Skills & Expertise"
+            description="A comprehensive overview of my technical skills, tools and technologies I use to build
+              exceptional software solutions."
+          />
 
           {/* Technical Skills Grid */}
           <motion.div

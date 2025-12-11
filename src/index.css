@@ -223,7 +223,83 @@
   }
 }
 
+/* Section Header Animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes underlineGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 @layer components {
+  /* Section Header Animation Classes */
+  .animate-section-heading {
+    animation: slideInDown 0.6s ease-out forwards;
+  }
+
+  .animate-section-subheading {
+    animation: slideInUp 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .animate-section-description {
+    animation: fadeInScale 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .heading-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .heading-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    background: var(--gradient-hero);
+    border-radius: 2px;
+    animation: underlineGrow 0.7s ease-out 0.3s forwards;
+    width: 0;
+  }
+
   /* Hero text gradient */
   .text-gradient {
     background: var(--gradient-hero);

@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import TestimonialModal from '@/components/ui/TestimonialModal';
+import SectionHeading from '@/components/SectionHeading';
 
 interface Testimonial {
   id: number;
@@ -65,21 +66,11 @@ const Testimonials = () => {
         <div className="container mx-auto px-3 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.5 }}
-              className="mb-12 text-center sm:mb-16"
-            >
-              <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
-                <span className="text-gradient">Testimonials</span>
-              </h2>
-              <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
-                What colleagues and clients say about working with me and the impact of my
-                contributions.
-              </p>
-            </motion.div>
+            <SectionHeading
+              title="Testimonials"
+              description="What colleagues and clients say about working with me and the impact of my
+                contributions."
+            />
 
             {/* Testimonials Grid */}
             <motion.div

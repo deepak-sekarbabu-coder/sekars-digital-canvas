@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Building, Calendar, MapPin, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SectionHeading from '@/components/SectionHeading';
 
 const Experience = () => {
   const experiences = [
@@ -164,21 +165,11 @@ const Experience = () => {
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center sm:mb-16"
-          >
-            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
-              <span className="text-gradient">Professional Experience</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
-              A journey through my professional career, highlighting key roles, responsibilities and
-              achievements in software development.
-            </p>
-          </motion.div>
+          <SectionHeading
+            title="Professional Experience"
+            description="A journey through my professional career, highlighting key roles, responsibilities and
+              achievements in software development."
+          />
 
           {/* Experience Timeline */}
           <div className="space-y-6 sm:space-y-8">

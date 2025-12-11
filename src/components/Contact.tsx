@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { BookOpen, Clock, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
+import SectionHeading from '@/components/SectionHeading';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -176,21 +177,11 @@ const Contact = () => {
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center sm:mb-16"
-          >
-            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
-              Let's <span className="text-gradient">Connect</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
-              I'm always interested in new opportunities, collaborations and interesting projects.
-              Let's discuss how we can work together to bring your ideas to life.
-            </p>
-          </motion.div>
+          <SectionHeading
+            title="Let's Connect"
+            description="I'm always interested in new opportunities, collaborations and interesting projects.
+              Let's discuss how we can work together to bring your ideas to life."
+          />
 
           <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
             {/* Contact Form */}

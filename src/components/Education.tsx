@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { GraduationCap, Calendar, MapPin, Award, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SectionHeading from '@/components/SectionHeading';
 
 const Education = () => {
   const education = [
@@ -83,21 +84,11 @@ const Education = () => {
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center sm:mb-16"
-          >
-            <h2 className="mb-4 text-heading-mobile font-bold sm:mb-6 sm:text-3xl lg:text-heading">
-              <span className="text-gradient">Education & Qualifications</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-body-mobile text-muted-foreground sm:text-base lg:text-lg">
-              My academic journey and professional certifications that have shaped my expertise in
-              software development and technology.
-            </p>
-          </motion.div>
+          <SectionHeading
+            title="Education & Qualifications"
+            description="My academic journey and professional certifications that have shaped my expertise in
+              software development and technology."
+          />
 
           {/* Education Timeline */}
           <div className="mb-12 space-y-6 sm:mb-16 sm:space-y-8">
