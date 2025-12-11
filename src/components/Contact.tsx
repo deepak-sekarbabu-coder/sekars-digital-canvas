@@ -355,23 +355,6 @@ const Contact = () => {
                   </CardContent>
                 </Card>
               </motion.div>
-
-              {/* Availability */}
-              <motion.div whileHover={{ y: -5, boxShadow: 'var(--shadow-hover)' }}>
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <div className="mb-2 inline-flex items-center gap-2 text-green-600 dark:text-green-400">
-                      <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-                      <span className="text-sm font-medium">
-                        Currently Servicing Notice Period in Stockholm, Sweden
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Ready to start from 15 December 2024 onwards
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
             </motion.div>
           </div>
 
