@@ -129,7 +129,7 @@ const Contact = () => {
       label: 'Phone',
       value: import.meta.env.VITE_PHONE_NUMBER || '',
       href: `tel:${import.meta.env.VITE_PHONE_NUMBER || ''}`,
-      description: 'Available Mon-Fri, 9AM-6PM CEST',
+      description: 'Available Mon-Fri, 9AM-6PM IST',
     },
     {
       icon: Phone,
