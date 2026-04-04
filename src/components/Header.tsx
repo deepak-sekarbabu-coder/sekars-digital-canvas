@@ -76,22 +76,22 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex h-14 items-center justify-between gap-2 sm:h-16 sm:gap-4">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+        <div className="flex h-12 items-center justify-between gap-2 sm:h-14 md:h-16 lg:h-20">
           <div
-            className="text-gradient min-w-0 flex-shrink cursor-pointer truncate text-base font-bold sm:text-lg lg:text-xl"
+            className="text-gradient cursor-pointer truncate text-sm font-bold sm:text-base md:text-lg lg:text-xl"
             onClick={() => scrollToSection('hero')}
           >
             Deepak Sekarbabu
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center space-x-8 md:flex">
+          <nav className="hidden items-center space-x-6 lg:flex xl:space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative font-medium transition-all duration-200 ${
+                className={`relative whitespace-nowrap text-sm font-medium transition-all duration-200 xl:text-base ${
                   isNavItemActive(item.id)
                     ? 'font-semibold text-primary'
                     : 'text-foreground hover:text-primary'
@@ -117,7 +117,7 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
               variant="outline"
               size="icon"
               onClick={toggleDarkMode}
-              className="ml-4"
+              className="ml-2 h-8 w-8 sm:h-9 sm:w-9"
               aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -127,19 +127,19 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
             </Button>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-1 sm:gap-2 md:hidden">
+          {/* Mobile/Tablet Menu Button */}
+          <div className="flex items-center gap-1.5 lg:hidden">
             <Button
               variant="outline"
               size="icon"
               onClick={toggleDarkMode}
-              className="h-8 w-8 shrink-0 sm:h-9 sm:w-9"
+              className="h-8 w-8 sm:h-9 sm:w-9"
               aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDarkMode ? (
-                <Sun className="h-3 w-3 sm:h-4 sm:w-4" />
+                <Sun className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               ) : (
-                <Moon className="h-3 w-3 sm:h-4 sm:w-4" />
+                <Moon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               )}
               <span className="sr-only">
                 {isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -149,13 +149,13 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
               variant="outline"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="h-8 w-8 shrink-0 sm:h-9 sm:w-9"
+              className="h-8 w-8 sm:h-9 sm:w-9"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? (
-                <X className="h-3 w-3 sm:h-4 sm:w-4" />
+                <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               ) : (
-                <Menu className="h-3 w-3 sm:h-4 sm:w-4" />
+                <Menu className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               )}
               <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
             </Button>
@@ -169,14 +169,14 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 right-0 top-full space-y-1 border-b border-border bg-background/95 py-3 shadow-card backdrop-blur-md md:hidden"
+            className="absolute left-0 right-0 top-full border-b border-border bg-background/95 py-3 shadow-card backdrop-blur-md lg:hidden"
           >
-            <div className="container mx-auto px-3 sm:px-6 lg:px-8">
+            <div className="container mx-auto px-3 sm:px-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative block w-full rounded-md px-3 py-2.5 text-left text-sm transition-all duration-200 sm:px-4 sm:py-3 sm:text-base ${
+                  className={`relative block w-full rounded-md px-3 py-2.5 text-left text-sm transition-all duration-200 sm:px-4 sm:py-3 ${
                     isNavItemActive(item.id)
                       ? 'border-l-2 border-primary bg-primary/10 font-semibold text-primary'
                       : 'text-foreground hover:bg-muted hover:text-primary'
@@ -189,7 +189,7 @@ const Header = ({ toggleDarkMode, isDarkMode }: HeaderProps) => {
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="h-1.5 w-1.5 rounded-full bg-primary sm:h-2 sm:w-2"
+                        className="h-1.5 w-1.5 rounded-full bg-primary"
                       />
                     )}
                   </div>

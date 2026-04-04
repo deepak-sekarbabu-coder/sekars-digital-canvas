@@ -14,14 +14,28 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1.5rem',
+        lg: '2rem',
+        xl: '2.5rem',
+      },
       screens: {
+        xs: '475px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1400px',
+        '3xl': '1600px',
       },
     },
     extend: {
       screens: {
         xs: '475px',
+        '2xs': '375px',
+        '3xl': '1600px',
+        '4xl': '1920px',
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -78,6 +92,17 @@ export default {
         'subheading-mobile': 'var(--text-subheading-mobile)',
         'body-mobile': 'var(--text-body-mobile)',
         'small-mobile': 'var(--text-small-mobile)',
+        // Fluid typography using clamp
+        'fluid-hero': 'clamp(2rem, 5vw, 3.5rem)',
+        'fluid-heading': 'clamp(1.5rem, 4vw, 2.25rem)',
+        'fluid-subheading': 'clamp(1.125rem, 2.5vw, 1.5rem)',
+        'fluid-body': 'clamp(0.875rem, 1.5vw, 1rem)',
+        'fluid-small': 'clamp(0.75rem, 1vw, 0.875rem)',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '30': '7.5rem',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',

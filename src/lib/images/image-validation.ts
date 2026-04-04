@@ -12,7 +12,6 @@ export const validateResponsiveImages = () => {
 
   imagesWithSrcSet.forEach((img, index) => {
     const imgElement = img as HTMLImageElement;
-    // @ts-ignore - accessing DOM property which might be named differently in some environments
     const srcSet = imgElement.srcset || imgElement.getAttribute('srcset');
     const currentSrc = imgElement.currentSrc || imgElement.src;
 

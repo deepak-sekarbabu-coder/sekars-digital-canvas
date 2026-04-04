@@ -9,11 +9,22 @@ interface SmoothScrollOptions {
 }
 
 /**
- * Get the height of the fixed header
+ * Get the height of the fixed header with responsive consideration
  */
 export const getHeaderHeight = (): number => {
   const header = document.querySelector('header');
-  return header ? header.offsetHeight : 64; // Default to 64px if header not found
+  if (header) {
+    return header.offsetHeight;
+  }
+  // Default heights based on screen size
+  if (typeof window !== 'undefined') {
+    const width = window.innerWidth;
+    if (width < 640) return 48; // Mobile
+    if (width < 768) return 56; // Small tablet
+    if (width < 1024) return 64; // Tablet
+    return 80; // Desktop
+  }
+  return 64;
 };
 
 /**
@@ -77,12 +88,14 @@ export const isElementInViewport = (elementId: string, threshold: number = 0.3):
 /**
  * Get the currently active section based on scroll position and header offset
  */
-export const getActiveSection = (sectionIds: string[]): string => {
+export const getActiveSection = (sectionIds: string[]): string | null => {
+  if (!sectionIds.length) return null;
+
   const scrollPosition = window.scrollY;
   const headerHeight = getHeaderHeight();
   const triggerPoint = scrollPosition + headerHeight + 50; // Header height + 50px buffer
 
-  let activeSection = sectionIds[0]; // Default to first section
+  let activeSection: string = sectionIds[0] ?? ''; // Default to first section or empty string
 
   for (const id of sectionIds) {
     const element = document.getElementById(id);
