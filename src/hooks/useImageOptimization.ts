@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useMemo } from 'react';
 import { generateResponsiveSrcSet } from '@/lib/images/responsive-images';
 
 interface ImageOptimizationOptions {
@@ -20,102 +20,41 @@ interface OptimizedImageData {
 export const useImageOptimization = ({
   src,
   width,
-  height,
-  quality = 75,
-  format = 'webp',
   priority = false,
 }: ImageOptimizationOptions): OptimizedImageData => {
-  const [optimizedData, setOptimizedData] = useState<OptimizedImageData>({
-    src,
-    srcSet: '',
-    sizes: '100vw',
-  });
+  return useMemo(() => {
+    const { srcSet, sizes } = generateResponsiveSrcSet(src, width);
 
-  // Generate different sizes for responsive images
-  const generateResponsiveSizes = useCallback(
-    (baseSrc: string) => {
-      // Use the utility function to generate responsive srcSet
-      const { srcSet, sizes, hasResponsive } = generateResponsiveSrcSet(baseSrc, width);
-
-      // Log in development to show which images are using responsive versions
-      if (import.meta.env.DEV && hasResponsive) {
-        console.log(`📸 Using responsive images for: ${baseSrc}`);
-      }
-
-      return { srcSet, sizes };
-    },
-    [width]
-  );
-
-  // Generate blur placeholder
-  const generateBlurPlaceholder = useCallback(async (imageSrc: string): Promise<string> => {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Small canvas for blur effect
-        canvas.width = 10;
-        canvas.height = 10;
-
-        if (ctx) {
-          ctx.filter = 'blur(2px)';
-          ctx.drawImage(img, 0, 0, 10, 10);
-          resolve(canvas.toDataURL('image/jpeg', 0.1));
-        } else {
-          resolve('');
-        }
-      };
-
-      img.onerror = () => resolve('');
-      img.src = imageSrc;
-    });
-  }, []);
-
-  useEffect(() => {
-    const optimizeImage = async () => {
-      const { srcSet, sizes } = generateResponsiveSizes(src);
-
-      // Generate blur placeholder for non-priority images
-      let placeholder = '';
-      if (!priority) {
-        try {
-          placeholder = await generateBlurPlaceholder(src);
-        } catch (error) {
-          console.warn('Failed to generate blur placeholder:', error);
-        }
-      }
-
-      setOptimizedData({
-        src,
-        srcSet,
-        sizes,
-        placeholder,
-      });
+    return {
+      src,
+      srcSet,
+      sizes,
+      placeholder: priority ? undefined : '',
     };
-
-    optimizeImage();
-  }, [src, generateResponsiveSizes, generateBlurPlaceholder, priority]);
-
-  return optimizedData;
+  }, [src, width, priority]);
 };
+
+const preloadRegistry = new Set<string>();
 
 // Utility function to preload critical images
 export const preloadImage = (src: string, priority = false) => {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || preloadRegistry.has(src)) {
+    return;
+  }
+
+  const selector = `link[rel="preload"][as="image"][href="${src}"], link[rel="prefetch"][as="image"][href="${src}"]`;
+  if (document.querySelector(selector)) {
+    preloadRegistry.add(src);
+    return;
+  }
 
   const link = document.createElement('link');
   link.rel = priority ? 'preload' : 'prefetch';
   link.as = 'image';
   link.href = src;
 
-  // Add to head if not already present
-  if (!document.querySelector(`link[href="${src}"]`)) {
-    document.head.appendChild(link);
-  }
+  document.head.appendChild(link);
+  preloadRegistry.add(src);
 };
 
 // Check if browser supports modern image formats

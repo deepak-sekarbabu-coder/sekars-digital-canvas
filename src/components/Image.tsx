@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import ResponsiveImage from '@/components/ui/responsive-image';
 import { useImageOptimization, preloadImage } from '@/hooks/useImageOptimization';
 import { cn } from '@/lib/utils';
@@ -52,10 +52,11 @@ const Image = forwardRef<HTMLDivElement, ImageProps>(
       priority,
     });
 
-    // Preload image if requested
-    if (preload || priority) {
-      preloadImage(src, priority);
-    }
+    useEffect(() => {
+      if (preload || priority) {
+        preloadImage(src, priority);
+      }
+    }, [preload, priority, src]);
 
     return (
       <div ref={ref} className="relative">

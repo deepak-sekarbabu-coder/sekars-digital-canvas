@@ -1,7 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import TestimonialModal from '@/components/ui/TestimonialModal';
+import { lazy, Suspense, useState } from 'react';
 import SectionHeading from '@/components/SectionHeading';
 
 interface Testimonial {
@@ -12,31 +11,33 @@ interface Testimonial {
   height: number;
 }
 
-const Testimonials = () => {
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      image: '/pics/testimonials/Testimonial1.png',
-      alt: 'Testimonial 1',
-      width: 600,
-      height: 400,
-    },
-    {
-      id: 2,
-      image: '/pics/testimonials/Testimonial2.png',
-      alt: 'Testimonial 2',
-      width: 600,
-      height: 400,
-    },
-    {
-      id: 3,
-      image: '/pics/testimonials/Testimonial3.png',
-      alt: 'Testimonial 3',
-      width: 600,
-      height: 400,
-    },
-  ];
+const TESTIMONIALS: Testimonial[] = [
+  {
+    id: 1,
+    image: '/pics/testimonials/Testimonial1.png',
+    alt: 'Testimonial 1',
+    width: 600,
+    height: 400,
+  },
+  {
+    id: 2,
+    image: '/pics/testimonials/Testimonial2.png',
+    alt: 'Testimonial 2',
+    width: 600,
+    height: 400,
+  },
+  {
+    id: 3,
+    image: '/pics/testimonials/Testimonial3.png',
+    alt: 'Testimonial 3',
+    width: 600,
+    height: 400,
+  },
+];
 
+const TestimonialModal = lazy(() => import('@/components/ui/TestimonialModal'));
+
+const Testimonials = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
 
   const listVariants = {
@@ -80,7 +81,7 @@ const Testimonials = () => {
               viewport={{ once: false, amount: 0.2 }}
               className="grid gap-8 md:grid-cols-2"
             >
-              {testimonials.map((testimonial) => (
+              {TESTIMONIALS.map((testimonial) => (
                 <motion.div
                   key={testimonial.id}
                   variants={itemVariants}
@@ -110,12 +111,16 @@ const Testimonials = () => {
         </div>
       </section>
 
-      <TestimonialModal
-        isOpen={!!selectedTestimonial}
-        onClose={() => setSelectedTestimonial(null)}
-        imageUrl={selectedTestimonial?.image || ''}
-        altText={selectedTestimonial?.alt || ''}
-      />
+      {selectedTestimonial && (
+        <Suspense fallback={null}>
+          <TestimonialModal
+            isOpen={true}
+            onClose={() => setSelectedTestimonial(null)}
+            imageUrl={selectedTestimonial.image}
+            altText={selectedTestimonial.alt}
+          />
+        </Suspense>
+      )}
     </>
   );
 };
